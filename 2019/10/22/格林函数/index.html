@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="以势能的求解为例，我们来了解一下格林函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="格林函数">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;22&#x2F;%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0&#x2F;index.html">
+<meta property="og:site_name" content="thuxuxs">
+<meta property="og:description" content="以势能的求解为例，我们来了解一下格林函数。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-22T09:12:37.899Z">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>格林函数</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng" target="_blank" rel="noopener">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/10/22/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&text=格林函数" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&is_video=false&description=格林函数" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=格林函数&body=Check out this article: http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&name=格林函数&description=&lt;p&gt;以势能的求解为例，我们来了解一下格林函数。&lt;br&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更一般的情况"><span class="toc-number">1.</span> <span class="toc-text">更一般的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物理学中的一些格林函数"><span class="toc-number">2.</span> <span class="toc-text">物理学中的一些格林函数</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        格林函数
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">thuxuxs</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-22T09:10:45.000Z" itemprop="datePublished">2019-10-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>以势能的求解为例，我们来了解一下格林函数。<br><a id="more"></a><br>假设空间有电荷量分布为 $\rho(r)$ ,则根据高斯定理，我们有空间电场应该满足条件<script type="math/tex">\nabla\cdot E(r)=\frac{\rho(r)}{\varepsilon_0},</script>再根据$E(r)=-\nabla \phi(r)$，结合起来看，我们可以求得电势和电荷分布之间的关系<script type="math/tex">-\nabla^2\phi(r)=\frac{\rho(r)}{\varepsilon_0},</script>此即为泊松方程，进一步我们有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+-\nabla^2\phi(r_1)&=\frac{\rho(r_1)}{\varepsilon_0}\\
+&=\frac{1}{\varepsilon_0}\int\delta(r_1-r_2)\rho(r_2)d^3r_2\\
+&=\frac{1}{\varepsilon_0}\int[-\nabla^2G(r_1,r_2)]\rho(r_2)d^3r_2\\
+&=-\nabla^2\left\{\frac{1}{\varepsilon_0}\int G(r_1,r_2)\rho(r_2)d^3r_2\right\}
+\end{aligned}</script><p>其中$G(r_1,r_2)$即为格林函数。所以我们求解此泊松方程等价于求满足<script type="math/tex">-\nabla^2G(r_1,r_2)]=\delta(r_1-r_2)</script>的格林函数即可，然后在利用<script type="math/tex">\phi(r_1)=\frac{1}{\varepsilon_0}\int G(r_1,r_2)\rho(r_2)d^3r_2</script>可求得空间的电势分布。其实，根据电势叠加定理我们可以直接写出<script type="math/tex">\phi(r_1)=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(r_2)}{\left|r_1-r_2\right|}d^3r_2</script>由此得到的格林函数<script type="math/tex">G(r_1,r_2)=\frac{1}{4\pi}\frac{1}{\left|r_1-r_2\right|}</script>与前式满足泊松方程所解得的格林函数是一致的。对于这种利用格林函数来求解微分方程的方法，我们可以理解为利用点电荷产生的势的叠加来求得总的势。</p>
+<h3 id="更一般的情况"><a href="#更一般的情况" class="headerlink" title="更一般的情况"></a>更一般的情况</h3><p>设我们有算符$\mathcal{L}$，其作用在势分布函数$y(r)$上得到空间源分布$f(r)$，则我们有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathcal{L}y(r)&=f(r)\\
+&=\int\delta(r-r')f(r')dr'\\
+&=\int \mathcal{L}G(r,r')f(r')dr'\\
+&=\mathcal{L}\int G(r,r')f(r')dr'\\
+\end{aligned}</script><p>并且</p>
+<script type="math/tex; mode=display">
+\mathcal{L} G(r,r')=\delta(r-r')</script><script type="math/tex; mode=display">
+y(r)=\int G(r,r')f(r')dr'</script><h3 id="物理学中的一些格林函数"><a href="#物理学中的一些格林函数" class="headerlink" title="物理学中的一些格林函数"></a>物理学中的一些格林函数</h3><script type="math/tex; mode=display">\begin{array}{c|ccc}
+dim & \nabla^2 & \nabla^2+k^2 & \nabla^2-k^2\\
+\hline
+1 & \frac{1}{2}\left|x_1-x_2\right| & -\frac{i}{2k}\exp(ik\left|x_1-x_2\right|) & -\frac{1}{2k}\exp(-k\left|x_1-x_2\right|)\\
+2 & \frac{1}{2\pi}\ln\left|\rho_1-\rho_2\right| & -\frac{i}{4}H_0^{(1)}(k\left|\rho_1-\rho_2\right|) & -\frac{1}{2\pi}K_0(k\left|\rho_1-\rho_2\right|)\\
+3 & -\frac{1}{4\pi}\frac{1}{\left|r_1-r_2\right|} & -\frac{\exp(ik\left|r_1-r_2\right|)}{4\pi\left|r_1-r_2\right|} & -\frac{\exp(-k\left|r_1-r_2\right|)}{4\pi\left|r_1-r_2\right|}
+\end{array}</script><p>其中$H_0^{(1)}$为Hankel函数，$K_0$是modified Bessel函数。</p>
+<blockquote>
+<p>求得格林函数后，如果积分不容易，我们可以采用技术展开的方法来积分，例如波恩近似便是。</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng" target="_blank" rel="noopener">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更一般的情况"><span class="toc-number">1.</span> <span class="toc-text">更一般的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物理学中的一些格林函数"><span class="toc-number">2.</span> <span class="toc-text">物理学中的一些格林函数</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&text=格林函数" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&is_video=false&description=格林函数" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=格林函数&body=Check out this article: http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&title=格林函数" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/&name=格林函数&description=&lt;p&gt;以势能的求解为例，我们来了解一下格林函数。&lt;br&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 xu xusheng
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng" target="_blank" rel="noopener">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js"></script> -->
+</body>
+</html>
