@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>thuxuxs</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/donghufeng/"/>
+  <updated>2019-10-22T09:12:37.899Z</updated>
+  <id>https://github.com/donghufeng/</id>
+  
+  <author>
+    <name>xu xusheng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>格林函数</title>
+    <link href="https://github.com/donghufeng/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/"/>
+    <id>https://github.com/donghufeng/2019/10/22/格林函数/</id>
+    <published>2019-10-22T09:10:45.000Z</published>
+    <updated>2019-10-22T09:12:37.899Z</updated>
+    
+    <content type="html"><![CDATA[<p>以势能的求解为例，我们来了解一下格林函数。<br><a id="more"></a><br>假设空间有电荷量分布为 $\rho(r)$ ,则根据高斯定理，我们有空间电场应该满足条件<script type="math/tex">\nabla\cdot E(r)=\frac{\rho(r)}{\varepsilon_0},</script>再根据$E(r)=-\nabla \phi(r)$，结合起来看，我们可以求得电势和电荷分布之间的关系<script type="math/tex">-\nabla^2\phi(r)=\frac{\rho(r)}{\varepsilon_0},</script>此即为泊松方程，进一步我们有</p><script type="math/tex; mode=display">\begin{aligned}-\nabla^2\phi(r_1)&=\frac{\rho(r_1)}{\varepsilon_0}\\&=\frac{1}{\varepsilon_0}\int\delta(r_1-r_2)\rho(r_2)d^3r_2\\&=\frac{1}{\varepsilon_0}\int[-\nabla^2G(r_1,r_2)]\rho(r_2)d^3r_2\\&=-\nabla^2\left\{\frac{1}{\varepsilon_0}\int G(r_1,r_2)\rho(r_2)d^3r_2\right\}\end{aligned}</script><p>其中$G(r_1,r_2)$即为格林函数。所以我们求解此泊松方程等价于求满足<script type="math/tex">-\nabla^2G(r_1,r_2)]=\delta(r_1-r_2)</script>的格林函数即可，然后在利用<script type="math/tex">\phi(r_1)=\frac{1}{\varepsilon_0}\int G(r_1,r_2)\rho(r_2)d^3r_2</script>可求得空间的电势分布。其实，根据电势叠加定理我们可以直接写出<script type="math/tex">\phi(r_1)=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(r_2)}{\left|r_1-r_2\right|}d^3r_2</script>由此得到的格林函数<script type="math/tex">G(r_1,r_2)=\frac{1}{4\pi}\frac{1}{\left|r_1-r_2\right|}</script>与前式满足泊松方程所解得的格林函数是一致的。对于这种利用格林函数来求解微分方程的方法，我们可以理解为利用点电荷产生的势的叠加来求得总的势。</p><h3 id="更一般的情况"><a href="#更一般的情况" class="headerlink" title="更一般的情况"></a>更一般的情况</h3><p>设我们有算符$\mathcal{L}$，其作用在势分布函数$y(r)$上得到空间源分布$f(r)$，则我们有</p><script type="math/tex; mode=display">\begin{aligned}\mathcal{L}y(r)&=f(r)\\&=\int\delta(r-r')f(r')dr'\\&=\int \mathcal{L}G(r,r')f(r')dr'\\&=\mathcal{L}\int G(r,r')f(r')dr'\\\end{aligned}</script><p>并且</p><script type="math/tex; mode=display">\mathcal{L} G(r,r')=\delta(r-r')</script><script type="math/tex; mode=display">y(r)=\int G(r,r')f(r')dr'</script><h3 id="物理学中的一些格林函数"><a href="#物理学中的一些格林函数" class="headerlink" title="物理学中的一些格林函数"></a>物理学中的一些格林函数</h3><script type="math/tex; mode=display">\begin{array}{c|ccc}dim & \nabla^2 & \nabla^2+k^2 & \nabla^2-k^2\\\hline1 & \frac{1}{2}\left|x_1-x_2\right| & -\frac{i}{2k}\exp(ik\left|x_1-x_2\right|) & -\frac{1}{2k}\exp(-k\left|x_1-x_2\right|)\\2 & \frac{1}{2\pi}\ln\left|\rho_1-\rho_2\right| & -\frac{i}{4}H_0^{(1)}(k\left|\rho_1-\rho_2\right|) & -\frac{1}{2\pi}K_0(k\left|\rho_1-\rho_2\right|)\\3 & -\frac{1}{4\pi}\frac{1}{\left|r_1-r_2\right|} & -\frac{\exp(ik\left|r_1-r_2\right|)}{4\pi\left|r_1-r_2\right|} & -\frac{\exp(-k\left|r_1-r_2\right|)}{4\pi\left|r_1-r_2\right|}\end{array}</script><p>其中$H_0^{(1)}$为Hankel函数，$K_0$是modified Bessel函数。</p><blockquote><p>求得格林函数后，如果积分不容易，我们可以采用技术展开的方法来积分，例如波恩近似便是。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以势能的求解为例，我们来了解一下格林函数。&lt;br&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://github.com/donghufeng/2019/10/22/hello-world/"/>
+    <id>https://github.com/donghufeng/2019/10/22/hello-world/</id>
+    <published>2019-10-22T08:38:26.180Z</published>
+    <updated>2019-10-22T08:53:59.521Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>$\alpha$</p><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
