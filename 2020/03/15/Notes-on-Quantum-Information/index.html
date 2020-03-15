@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Notes on Quantum Computation and Quantum Information.">
+<meta name="keywords" content="量子信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes on Quantum Information">
 <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;donghufeng&#x2F;2020&#x2F;03&#x2F;15&#x2F;Notes-on-Quantum-Information&#x2F;index.html">
@@ -18,7 +19,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch-Jozsa.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;6&#x2F;61&#x2F;Q_fourier_nqubits.png&#x2F;1280px-Q_fourier_nqubits.png?1557480175741">
-<meta property="og:updated_time" content="2020-03-15T14:11:11.339Z">
+<meta property="og:updated_time" content="2020-03-15T15:13:50.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;bloch_sphere.png">
     
@@ -63,11 +64,15 @@
          
           <li><a href="/">首页</a></li>
          
-          <li><a href="/about/">关于</a></li>
-         
           <li><a href="/archives/">归档</a></li>
          
+          <li><a href="/tags">标签</a></li>
+         
+          <li><a href="/categories">分类</a></li>
+         
           <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
         
       </ul>
     </span>
@@ -134,8 +139,18 @@
 
 
       
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a>
+    </div>
+
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>
+    </div>
+
 
     </div>
   </header>
@@ -231,7 +246,7 @@ e^{-i\theta/2}&0\\
 &\left|1\right> \left<1\right|\otimes I\otimes \left|1\right> \left<1\right|\otimes I\otimes X\otimes I+\\
 &\left|0\right> \left<0\right|\otimes I\otimes \left|1\right> \left<1\right|\otimes I\otimes I\otimes I+\\
 &\left|1\right> \left<1\right|\otimes I\otimes \left|0\right> \left<0\right|\otimes I\otimes I\otimes I+\\
-&\left|0\right> \left<0\right|\otimes I\otimes \left|0\right> \left<0\right|\otimes I\otimes I\otimes I
+&\left|0\right> \left<0\right|\otimes I\otimes \left|0\right> \left<0\right|\otimes I\otimes I\otimes I\\
 \end{aligned}</script><p>如果直接对态进行操作，则需要将如下态的系数之间做交换：</p>
 <script type="math/tex; mode=display">\left|A,B,C,D,E,F\right>\rightarrow \left|A,B,C,D,(AC)\oplus E,F\right></script><p>这里$\oplus$是模二加法运算。整个过程用伪代码表示为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> BDF <span class="keyword">in</span> &#123;<span class="number">0</span>,<span class="number">1</span>&#125;^<span class="number">3</span>:</span><br><span class="line">    a=(insert <span class="number">110</span> into BDF <span class="keyword">and</span> get <span class="number">1</span>B1D0F)</span><br><span class="line">    b=(insert <span class="number">111</span> into BDF <span class="keyword">and</span> get <span class="number">1</span>B1D1F)</span><br><span class="line">    swap(wavefunction[a], wavefunction[b])</span><br></pre></td></tr></table></figure>
@@ -447,11 +462,15 @@ $$UJ \left|i\right>=0=\left|\psi_i\right>=A \left|i\right></script><p>综上，$
          
           <li><a href="/">首页</a></li>
          
-          <li><a href="/about/">关于</a></li>
-         
           <li><a href="/archives/">归档</a></li>
          
+          <li><a href="/tags">标签</a></li>
+         
+          <li><a href="/categories">分类</a></li>
+         
           <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
         
       </ul>
     </div>
@@ -497,11 +516,15 @@ $$UJ \left|i\right>=0=\left|\psi_i\right>=A \left|i\right></script><p>综上，$
          
           <li><a href="/">首页</a></li>
          
-          <li><a href="/about/">关于</a></li>
-         
           <li><a href="/archives/">归档</a></li>
          
+          <li><a href="/tags">标签</a></li>
+         
+          <li><a href="/categories">分类</a></li>
+         
           <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
         
       </ul>
     </nav>
