@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Notes on Quantum Computation and Quantum Information.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on Quantum Information">
+<meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;donghufeng&#x2F;2020&#x2F;03&#x2F;15&#x2F;Notes-on-Quantum-Information&#x2F;index.html">
+<meta property="og:site_name" content="thuxuxs">
+<meta property="og:description" content="Notes on Quantum Computation and Quantum Information.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;bloch_sphere.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;telepotation.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch-Jozsa.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;6&#x2F;61&#x2F;Q_fourier_nqubits.png&#x2F;1280px-Q_fourier_nqubits.png?1557480175741">
+<meta property="og:updated_time" content="2020-03-15T14:11:11.339Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;bloch_sphere.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Notes on Quantum Information</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&text=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&is_video=false&description=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Notes on Quantum Information&body=Check out this article: https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&name=Notes on Quantum Information&description=&lt;p&gt;Notes on &lt;em&gt;Quantum Computation and Quantum Information&lt;/em&gt;.&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本原理"><span class="toc-number">1.</span> <span class="toc-text">基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用量子门"><span class="toc-number">1.1.</span> <span class="toc-text">常用量子门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经典离散傅里叶算法"><span class="toc-number">1.2.</span> <span class="toc-text">经典离散傅里叶算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量子离散傅里叶算法"><span class="toc-number">1.3.</span> <span class="toc-text">量子离散傅里叶算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#门实现"><span class="toc-number">1.4.</span> <span class="toc-text">门实现</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Notes on Quantum Information
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">thuxuxs</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-15T13:45:56.000Z" itemprop="datePublished">2020-03-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Notes on <em>Quantum Computation and Quantum Information</em>.</p>
+<a id="more"></a>
+<h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><hr>
+<p>单比特量子态的一般表达式为：</p>
+<p>​<script type="math/tex">\left|\psi\right>=e^{i\gamma}\left(\cos\frac{\theta}{2}\left|0\right>+e^{i\varphi}\sin\frac{\theta}{2}\left|1\right>\right)</script></p>
+<p>这里$\gamma$为全局相位，$\theta$和$\varphi$为布洛赫球中的坐标，<strong>这里是$\frac{\theta}{2}$</strong>。<br><img src="/img/bloch_sphere.png" alt="布洛赫球"><br>布洛赫球中不同坐标轴表示的单比特量子态</p>
+<script type="math/tex; mode=display">\begin{array}
+{|c||c|}
+\hline
+轴&\left|\psi\right>\\
+\hline
++Z&\left|0\right>\\
+\hline
+-Z&\left|1\right>\\
+\hline
++X&\frac{\left|0\right>+\left|1\right>}{\sqrt{2}}\\
+\hline
+-X&\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}\\
+\hline
++Y&\frac{\left|0\right>+i\left|1\right>}{\sqrt{2}}\\
+\hline
+-Y&\frac{\left|0\right>-i\left|1\right>}{\sqrt{2}}\\
+\hline
+ \end{array}</script><p><strong>各轴代表的态是对应Pauli算符的本征值，正轴向的态本征值为1，负轴向的态本征值为-1</strong></p>
+<hr>
+<p>两比特量子态可表示为：</p>
+<script type="math/tex; mode=display">\left|\varphi\right>=\alpha_{00}\left|00\right>+\alpha_{01}\left|01\right>+\alpha_{10}\left|10\right>+\alpha_{11}\left|11\right>.</script><p>归一化条件为</p>
+<script type="math/tex; mode=display">\sum_{x\in\{0,1\}^2}\left|\alpha_{x}\right|^2</script><p><strong>其中${0,1}^2$表示由0和1构成的所有长度为2的字符串的集合。</strong></p>
+<hr>
+<h2 id="常用量子门"><a href="#常用量子门" class="headerlink" title="常用量子门"></a>常用量子门</h2><ul>
+<li>$\text{Pauli-X}=\sigma_x=R_x(\pi)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}</script><ul>
+<li>$R_x(\theta)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+\cos \left(\frac{\theta}{2}\right)&-i\sin \left(\frac{\theta}{2}\right)\\
+-i\sin \left(\frac{\theta}{2}\right)&\cos \left(\frac{\theta}{2}\right)
+\end{pmatrix}</script><ul>
+<li>$\text{Pauli-Y}=\sigma_y=R_y(\pi)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+0&-i\\
+i&0
+\end{pmatrix}</script><ul>
+<li>$R_y(\theta)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+\cos \left(\frac{\theta}{2}\right)&-\sin \left(\frac{\theta}{2}\right)\\
+\sin \left(\frac{\theta}{2}\right)&\cos \left(\frac{\theta}{2}\right)
+\end{pmatrix}</script><ul>
+<li>$\text{Pauli-Z}=\sigma_z=R_z(\pi)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+1&0\\
+0&-1
+\end{pmatrix}</script><ul>
+<li>$R_z(\theta)$:</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+e^{-i\theta/2}&0\\
+0&e^{i\theta/2}
+\end{pmatrix}</script><ul>
+<li>Hadamard门</li>
+</ul>
+<script type="math/tex; mode=display">\frac{1}{\sqrt{2}}\begin{pmatrix}
+1&1\\
+1&-1
+\end{pmatrix}=R_x(\pi)R_y(\pi/2)=XY^{1/2}</script><p>均匀叠加态：</p>
+<script type="math/tex; mode=display">H^{\otimes n}\left|0\right>^{\otimes n}=\frac{1}{\sqrt{2^n}}\sum_{x\in\{0,1\}^n}\left|x\right></script><p>对于单比特时：</p>
+<script type="math/tex; mode=display">H \left|x\right>=\frac{1}{\sqrt{2}}\sum_{z\in \{0,1\}}(-1)^{xz}\left|z\right>=\frac{1}{\sqrt{2}}\sum_{z\in \{0,1\}}e^{ixz\pi}\left|z\right></script><p>更进一步，当初始态为$n$比特任意态时：</p>
+<script type="math/tex; mode=display">H^{\otimes n}\left|x\right>=\frac{1}{\sqrt{2^n}}\sum_{z}(-1)^{x\cdot z}\left|z\right></script><p>其中$x\cdot z$为$\left|x\right&gt;$和$\left|z\right&gt;$逐比特位相乘再求和。</p>
+<ul>
+<li>CNOT门</li>
+</ul>
+<script type="math/tex; mode=display">\begin{pmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&0&1\\
+0&0&1&0
+\end{pmatrix}</script><p>或：</p>
+<script type="math/tex; mode=display">\left|A,B\right>\rightarrow \left|A,A\oplus B\right></script><p>任意位置的CNOT门，以6比特1和3控制5为例：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&\left|1\right> \left<1\right|\otimes I\otimes \left|1\right> \left<1\right|\otimes I\otimes X\otimes I+\\
+&\left|0\right> \left<0\right|\otimes I\otimes \left|1\right> \left<1\right|\otimes I\otimes I\otimes I+\\
+&\left|1\right> \left<1\right|\otimes I\otimes \left|0\right> \left<0\right|\otimes I\otimes I\otimes I+\\
+&\left|0\right> \left<0\right|\otimes I\otimes \left|0\right> \left<0\right|\otimes I\otimes I\otimes I
+\end{aligned}</script><p>如果直接对态进行操作，则需要将如下态的系数之间做交换：</p>
+<script type="math/tex; mode=display">\left|A,B,C,D,E,F\right>\rightarrow \left|A,B,C,D,(AC)\oplus E,F\right></script><p>这里$\oplus$是模二加法运算。整个过程用伪代码表示为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> BDF <span class="keyword">in</span> &#123;<span class="number">0</span>,<span class="number">1</span>&#125;^<span class="number">3</span>:</span><br><span class="line">    a=(insert <span class="number">110</span> into BDF <span class="keyword">and</span> get <span class="number">1</span>B1D0F)</span><br><span class="line">    b=(insert <span class="number">111</span> into BDF <span class="keyword">and</span> get <span class="number">1</span>B1D1F)</span><br><span class="line">    swap(wavefunction[a], wavefunction[b])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SWAP门：</li>
+</ul>
+<p>经典计算里，异或运算可以用来交换两个数而不引入中间变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x,y</span><br><span class="line">x=x^y</span><br><span class="line">y=x^y <span class="comment">#y=x^y^y=x^0=x</span></span><br><span class="line">x=x^y <span class="comment">#y=x^y^x=y^0=y</span></span><br></pre></td></tr></table></figure>
+<p>量子计算里，也可以通过三个CNOT门来实现比特交换：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\left|a,b\right>&\rightarrow \left|a,a\oplus b\right>\\
+&\rightarrow \left|a\oplus a\oplus b,a\oplus b\right>=\left|b,a\oplus b\right>\\
+&\rightarrow \left|b,a\oplus b \oplus b\right>=\left|b,a\right>
+\end{aligned}</script><ul>
+<li>Toffoli门<br>就是CCNOT门。<br>模拟与非门：$T \left|a,b,1\right&gt;=\left|a,b,1\oplus(ab)\right&gt;=\left|a,b,\bar{ab}\right&gt;$<br>模拟FANOUT扇出：$T \left|1,a,0\right&gt;=\left|1,a,a\right&gt;$<br><strong>注意，上述的模拟不是通用的，只对输入为$\left|0\right&gt;$或者$\left|1\right&gt;$适用。</strong></li>
+</ul>
+<hr>
+<p>泡利算符的一些性质：<br>为了方便，取$\sigma_1=\sigma_x,\sigma_2=\sigma_y, \sigma_3=\sigma_z$。<br>对于任意的三位单位矢量$\vec{v}$，有</p>
+<script type="math/tex; mode=display">(\vec{v}\cdot \vec{\sigma})^2 =I</script><p>由此可证明：</p>
+<script type="math/tex; mode=display">\exp{i\theta \vec{v}\cdot \vec{\sigma}}=\cos(\theta)I+i\sin(\theta)\vec{v}\cdot\vec{\sigma}</script><p>更进一步，对于任意函数$f$，有：</p>
+<script type="math/tex; mode=display">f(\theta \vec{v}\cdot\vec{\sigma})=\frac{f(\theta)+f(-\theta)}{2}I+\frac{f(\theta)-f(-\theta)}{2}\vec{v}\cdot\vec{\sigma}</script><p>假设$\vec{v}\cdot\vec{\sigma}$的本征态为$\left|a\right&gt;,\left|b\right&gt;$，并将$\left|0\right&gt;$和$\left|1\right&gt;$本征态基矢上展开：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\left|0\right>&=\alpha \left|a\right>+\beta \left|b\right>\\
+\left|1\right>&=\gamma \left|a\right>+\delta \left|b\right>
+\end{aligned}</script><p>这里$\alpha,\beta,\gamma,\delta$是一个酉矩阵的矩阵元，所以$\alpha\delta-\beta\gamma=e^{i\theta}$，是一个相位，因此</p>
+<script type="math/tex; mode=display">\frac{\left|01\right>-\left|10\right>}{\sqrt{2}}=e^{i\theta}\frac{\left|ab\right>-\left|ba\right>}{\sqrt{2}}</script><p>所以，对于自旋单态，对于任意的$\vec{v}$方向测量$\vec{v}\cdot\vec{\sigma}$，如果第一个比特测量得到正方向（$\left|a\right&gt;$）则第二个比特位负方向（$\left|b\right&gt;$），反之亦然。</p>
+<p>对易关系：</p>
+<script type="math/tex; mode=display">\left[\sigma_i,\sigma_j\right]=2i\varepsilon_{ijk}\sigma_k</script><p>反对易关系：</p>
+<script type="math/tex; mode=display">\left\{\sigma_i,\sigma_j\right\}=0</script><p>由反对以关系还可以得到：</p>
+<script type="math/tex; mode=display">\sigma_i\sigma_j\sigma_i=-\sigma_j</script><p>其物理图像为，在布洛赫球中，将$j$轴绕$i$转动$\pi$的坐标变换，此时$j$轴变为$-j$轴。</p>
+<hr>
+<p>泡利矩阵、旋转算符和旋转哈密顿量之间的关系</p>
+<script type="math/tex; mode=display">U=R_i(\omega t)=e^{-i\omega t \sigma_i/2}=\cos(\omega t/2)I-i\sin(\omega t/2)\sigma_i</script><p>对应的哈密顿量为$H=\hbar \omega \sigma_i/2$</p>
+<hr>
+<p>关于模二加法$\oplus$：<br>是不考虑进位的加法，是加法运算的子集，等同与异或，满足交换律结合律</p>
+<script type="math/tex; mode=display">a\oplus a=0, 0\oplus a=a,1\oplus a=\bar{a}</script><hr>
+<p>单比特任意门分解</p>
+<script type="math/tex; mode=display">U=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)</script><hr>
+<p>贝尔态<br>先作用Hadmard门，在作用和CNOT门。</p>
+<script type="math/tex; mode=display">\left|\beta_{xy}\right>=\frac{\left|0,y\right>+(-1)^x \left|1,\bar{y}\right>}{\sqrt{2}}</script><hr>
+<p>量子隐形传态</p>
+<p>Alice和Bob的粒子处于纠缠态$\left|\beta_{00}\right&gt;$，Alice需要将态$\left|\psi\right&gt;$传递给Bob，步骤如下：</p>
+<ol>
+<li>Alice对手中的两个比特做用CNOT门</li>
+<li>Alice对手中的第一个比特作用Hadamard门</li>
+<li>Alice测量出两个比特，并把结果告诉Bob</li>
+<li>Bob根据Alice的测量结果分别作用X门和Z门到自己手中的比特上即可</li>
+</ol>
+<p><img src="/img/telepotation.png" alt="量子隐形传态"></p>
+<hr>
+<p>量子并行性</p>
+<p>假设有函数$f(x):{0,1}^n\rightarrow{0,1}$，可以构造门$U_f$使得</p>
+<script type="math/tex; mode=display">U_f \left|x,y\right>=\left|x,y\oplus f(x)\right></script><ol>
+<li>同时得到$f(x)$的值<br>取$\left|x,y\right&gt;=\frac{1}{\sqrt{2^n}}\sum_x \left|x\right&gt;\left|0\right&gt;$，作用$U_f$后，得到</li>
+</ol>
+<script type="math/tex; mode=display">U_f \left|x,y\right>=\frac{1}{\sqrt{2^n}}\sum_x \left|x\right>\left|f(x)\right></script><ol>
+<li>Deutsch算法<br>上面得到的态在测量时，只能坍缩到某个特定的$\left|f(x)\right&gt;$，因此并不真正意义上的并行。该算法能得到关于$f(x)$的全局信息。<br><img src="/img/Deutsch.png" alt="Deutsch算法算法"><br>对于以上线路，经过演算可得到：</li>
+</ol>
+<script type="math/tex; mode=display">\left|\psi_3\right>=\pm \left|f(0)\oplus f(1)\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><p>因此第一个比特是$f(x)$的全局信息$f(0)\oplus f(1)$。计算过程用到一个关键点：</p>
+<script type="math/tex; mode=display">U_f \left|x\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}=(-1)^{f(x)}\left|x\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><ol>
+<li>Deutsch-Jozsa算法<br>如果Alice手上的$f(x)$确保是常值函数或者平衡函数，Bob如何快速（尽量少次数地交换信息）判断出是什么函数？<br><img src="/img/Deutsch-Jozsa.png" alt="Deutsch-Jozsa算法"><br>根据演化可得到：</li>
+</ol>
+<script type="math/tex; mode=display">\left|\psi_3\right>=\frac{1}{2^n}\sum_z\sum_x(-1)^{f(x)+x\cdot z}\left|z\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><p>注意到，取$\left|z\right&gt;=\left|0\right&gt;^{\otimes n}$时，$\sum_x(-1)^{f(x)}/2^n$对于$f$为常值函数时已经归一化，$\left|z\right&gt;$取不到其他态，因此前$n$个比特只能全为0；当$f$为平衡函数时，$\left|z\right&gt;$中$\left|0\right&gt;^{\otimes n}$项的振幅为0，因此，前$n$个比特必不能全为0。</p>
+<hr>
+<p>量子傅里叶变换</p>
+<h2 id="经典离散傅里叶算法"><a href="#经典离散傅里叶算法" class="headerlink" title="经典离散傅里叶算法"></a>经典离散傅里叶算法</h2><p>对于数据点集合$A={A_i,i=0,N-1}$，其离散傅里叶变化为</p>
+<script type="math/tex; mode=display">B_j=\frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}{e^{2\pi i jk/N}A_k}</script><h2 id="量子离散傅里叶算法"><a href="#量子离散傅里叶算法" class="headerlink" title="量子离散傅里叶算法"></a>量子离散傅里叶算法</h2><p>n比特的态可以表示成$\left|j_1j_2…j_n\right&gt;$，可将态看着二进制数，从而也可将态写成十进制数表示为$\left|j\right&gt;$，其中</p>
+<script type="math/tex; mode=display">j=[j_1\cdots j_n]=j_1 * 2^{n-1}+j_i*2^{n-i}+j_n</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">3</span></span><br><span class="line">s=<span class="string">'111'</span></span><br><span class="line">k=int(s,<span class="number">2</span>) <span class="comment"># 参数2用来表示从二进制转化为十进制</span></span><br><span class="line">s==bin(k)[<span class="number">2</span>:].zfill(n) <span class="comment">#bin函数用来转化为二进制，zfill函数用来补零</span></span><br></pre></td></tr></table></figure>
+<p>对于二进制的分数表示$0.j<em>1j_2\cdots j_n$，其表示为十进制为$[0.j_1j_2\cdots j_n]=j_1<em>2^{-1}+\cdots+j_n</em>2^{-n}=\sum</em>{k=1}^{n}j_k*2^{-k}$<br>我们有$[0.j_1\cdots j_n]=[j_1\cdots j_n]/2^n.$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">3</span></span><br><span class="line">s=<span class="string">'0.011'</span></span><br><span class="line">k=int(s[<span class="number">2</span>:],<span class="number">2</span>)/<span class="number">2</span>**n</span><br><span class="line">s==<span class="string">'0.'</span>+bin(int(k*<span class="number">2</span>**n))[<span class="number">2</span>:].zfill(n)</span><br></pre></td></tr></table></figure>
+<p>对于态$\left|j\right&gt;$，其傅里叶变换定义为</p>
+<script type="math/tex; mode=display">\left|j\right>=\frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}e^{2\pi i jk/N}\left|k\right>,</script><p>其中$N=2^n$，设$\omega_n=e^{\frac{2\pi i}{2^n}}$其矩阵表示为，</p>
+<script type="math/tex; mode=display">\begin{pmatrix}
+\left|0\right>\\
+\vdots\\
+\left|j\right>\\
+\vdots\\
+\left|N-1\right>
+\end{pmatrix}=\frac{1}{\sqrt{N}}
+\begin{pmatrix}1&\cdots&1&\cdots&1\\
+\vdots&\cdots&\vdots&\cdots&\vdots\\
+1&\cdots&\omega_n^{j k}&\cdots&\omega_n^{j (N-1)}\\
+\vdots&\cdots&\vdots&\cdots&\vdots\\
+1&\cdots&\omega_n^{(N-1)k}&\cdots&\omega_n^{(N-1)^2}\\
+\end{pmatrix}
+\begin{pmatrix}
+\left|0\right>\\
+\vdots\\
+\left|k\right>\\
+\vdots\\
+\left|N-1\right>
+\end{pmatrix}</script><p>根据定义</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\sqrt{N}\left|j\right>&=\sum_{k=0}^{N-1}e^{2\pi ijk/N}\left|k\right>\\
+&=\sum_{k=0}^{N-1}e^{2\pi i k[0.j_1\cdots j_{n}]}\left|k\right>\\
+&=\sum_{(k_0,\cdots,k_{n-1})\in \{0,1\}^n}e^{2\pi i [0.j_1\cdots j_{n}]\sum_{l=1}^{n}2^{l-1}k_{n-l}}\left|k_0\cdots k_{n-1}\right>\\
+&=\sum_{(k_0,\cdots,k_{n-1})\in \{0,1\}^n}\prod_{l=1}^{n} e^{2\pi i k_{n-l}[j_1\cdots j_{l-1}.j_{l}\cdots j_n]}\left|k_0\cdots k_{n-1}\right>\\
+&=\sum_{(k_0,\cdots,k_{n-1})\in \{0,1\}^n}\prod_{l=1}^{n} e^{2\pi i k_{n-l}[0.j_{l}\cdots j_n]}\left|k_0\cdots k_{n-1}\right>\\
+&=(\left|0\right>+e^{2\pi i [0.j_n]}\left|1\right>)\otimes \sum_{(k_1,\cdots,k_{n-1})\in \{0,1\}^{(n-1)}}\prod_{l=1}^{n-1} e^{2\pi i k_{n-l}[0.j_{l}\cdots j_n]}\left|k_1\cdots k_{n-1}\right>\\
+&=\otimes_{l=1}^{n}\left(\left|0\right>+e^{2\pi i[0.j_l\cdots j_n]}\left|1\right>\right)
+\end{aligned}</script><p>第四个等式到第五个等式用到事实</p>
+<script type="math/tex; mode=display">e^{2\pi i k_{n-1}[j_1\cdots j_{l-1}.j_l\cdots j_n]}=e^{2\pi i k_{n-1}[j_1\cdots j_{l-1}]}e^{2\pi i k_{n-1}[0.j_{l}\cdots j_{n}]}=1\cdot e^{2\pi i k_{n-1}[0.j_l\cdots j_n]}</script><h2 id="门实现"><a href="#门实现" class="headerlink" title="门实现"></a>门实现</h2><p>对于目标态</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&\frac{1}{\sqrt{2}}(\left|0\right>+e^{2\pi i [0.j_n]}\left|1\right>)\\
+&=H\left|j_n\right>
+\end{aligned}</script><p>对于目标态</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&\frac{1}{\sqrt{2}}(\left|0\right>+e^{2\pi i [0.j_{n-1}j_n]}\left|1\right>)\\
+&=\frac{1}{\sqrt{2}}(\left|0\right>+e^{2\pi i [0.j_{n-1}]}e^{2\pi i [0.0j_n]}\left|1\right>)
+\end{aligned}</script><p>可先对$\left|j<em>{n-1}\right&gt;$做哈德马德变换，在做用$\left|j</em>{n}\right&gt;$控制$\left|j_{n-1}\right&gt;$的相位门$R_2$，其中</p>
+<script type="math/tex; mode=display">R_m=\begin{pmatrix}1&0\\0&e^{2\pi i /(2^m)}\end{pmatrix}</script><p>具体实现如下图，最后再做sweep门交换一下态即可。<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Q_fourier_nqubits.png/1280px-Q_fourier_nqubits.png?1557480175741" alt="quantum fourier"></p>
+<hr>
+<p>Cauchy-Schwarz不等式</p>
+<p>希尔伯特空间中的两个态矢量$\left|v\right&gt;$和$\left|w\right&gt;$，则有：</p>
+<script type="math/tex; mode=display">\left| \left<v\mid w\right>\right|^2\le \left<v\mid v\right> \left<w\mid w\right></script><p><strong>证明：</strong><br>在希尔伯特空间中选择一组基矢$\left|i\right&gt;$，并使得改组基矢的第一个为$\left|w\right&gt;/\sqrt{\left<w\mid w\right>}$，因此</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\left<v\mid v\right>\left<w\mid w\right>&=\sum_i \left<v\mid i\right>\left<i\mid v\right>\left<w\mid w\right>\\
+&\ge\frac{\left<v\mid w\right>\left<w\mid v\right>}{\left<w\mid w\right>}\left<w\mid w\right>\\
+&=\left|\left<v\mid w\right>\right|^2
+\end{aligned}</script><p>取$\ge$是因为求和中只取第一个基矢，而忽略掉有剩余基矢得到的数（为正数）。</p>
+<hr>
+<p>不同总类的算符</p>
+<ul>
+<li>Hermitian</li>
+</ul>
+<script type="math/tex; mode=display">A=A^\dagger</script><ul>
+<li>Unitary</li>
+</ul>
+<script type="math/tex; mode=display">UU^\dagger=I</script><ul>
+<li>Normal</li>
+</ul>
+<script type="math/tex; mode=display">AA^\dagger=A^\dagger A</script><ul>
+<li>Positive</li>
+</ul>
+<script type="math/tex; mode=display">\left<v\right|A\left|v\right>\ge 0, \text{for any} \left|v\right></script><ul>
+<li>Positive definite</li>
+</ul>
+<script type="math/tex; mode=display">\left<v\right|A\left|v\right> > 0, \text{for any} \left|v\right></script><ul>
+<li>Projector</li>
+</ul>
+<script type="math/tex; mode=display">P=\sum_{i=1}^k \left|i\right>\left<i\right|</script><hr>
+<p>迹：<br>对于任意算符$A$，和一组正交基矢$\left|i\right&gt;$,迹的定义为：</p>
+<script type="math/tex; mode=display">\text{tr}(A)=\sum_i \left<i\right|A\left|i\right>=\sum_i A_{ii}</script><p>取任意态$\left|\psi\right&gt;$，则有$\text{tr}(A \left|\psi\right&gt;\left&lt;\psi\right|)=\left&lt;\psi\right|A\left|\psi\right&gt;$，证明如下：</p>
+<script type="math/tex; mode=display">\text{tr}(A \left|\psi\right>\left<\psi\right|)=\sum_i \left<i\right|A\left|\psi\right> \left<\psi\mid i\right>=\sum_i  \left<\psi\mid i\right>\left<i\right|A\left|\psi\right>=\left<\psi\right|A\left|\psi\right></script><hr>
+<p>约化密度矩阵和偏迹：</p>
+<script type="math/tex; mode=display">\rho^A=\text{tr}_B(\rho^{AB})</script><p>e.g.:</p>
+<script type="math/tex; mode=display">\text{tr}_B(\left|a_1\right>\left<a_2\right|\otimes \left|b_1\right> \left<b_2\right|)=\left|a_1\right>\left<a_2\right|\text{tr}(\left|b_1\right> \left<b_2\right|)=\left|a_1\right>\left<a_2\right| \left<b_2\mid b_1\right></script><hr>
+<p>极分解(Polar decomposition)<br>对于$V$空间中的任意算符$A$，能将其按照如下形式分解</p>
+<script type="math/tex; mode=display">A=UJ=KU</script><p>其中，$U$为酉矩阵，且$J$为半正定矩阵，$J=\sqrt{A^\dagger A}$，$K=\sqrt{AA^\dagger}$，如果$A$可逆，则$U$唯一。<br><strong>证明：</strong></p>
+<ol>
+<li>取$V$空间的一组基矢$\left|i\right&gt;$和任意态$\left|v\right&gt;$，则：</li>
+</ol>
+<script type="math/tex; mode=display">\left<v\right|A^\dagger A \left|v\right>=\sum_i\left|a_i\right|^2\ge 0</script><p>因此$A^\dagger A$是对称半正定矩阵，$\sqrt{A^\dagger A}$也是对称半正定矩阵。</p>
+<ol>
+<li>根据谱定理，对于半正定矩阵有：<br><script type="math/tex">J=\sqrt{A^\dagger A}=\sum_i \lambda_i \left|i\right>\left<i\right|(\lambda_i\ge0)</script>。</li>
+<li>定义$\left|\psi_i\right&gt;=A \left|i\right&gt;$，因此有：</li>
+</ol>
+<script type="math/tex; mode=display">\left<\psi_i\mid \psi_i\right>=\left<i\right|A^\dagger A\left|i\right>=\lambda_i^2$$。
+4. 对于$\lambda_i\neq 0$的态，定义$\left|e_i\right>=\left|\psi_i\right>/\lambda_i$，因此$\left|e_i\right>$是彼此正交的单位矢量。
+5. 利用Schmidt正交化方法对$\left|e_i\right>$进行扩充，使得其为$V$中的基矢，并仍然记为$\left|e_i\right>$。
+6. 定义酉算符$U=\sum_i \left|e_i\right>\left<i\right|$。
+7. 对于$\lambda_i\neq 0$的那些态，有
+$$UJ \left|i\right>=\lambda_i U \left|i\right>=\lambda_i \left|e_i\right>=\left|\psi_i\right>=A \left|i\right>$$。
+8. 对于$\lambda_i =0$的态来说，有
+$$UJ \left|i\right>=0=\left|\psi_i\right>=A \left|i\right></script><p>综上，$A=UJ$。此时，$A=UJ=UJU^\dagger U=KU$，且$K=UJU^\dagger=K^\dagger$，此时</p>
+<script type="math/tex; mode=display">AA^\dagger=KUU^\dagger K^\dagger=K^2</script><p>所以$K=\sqrt{AA^\dagger}$。</p>
+<hr>
+<p>奇异值分解<br>对于任意方矩阵，总可以按照如下分解，</p>
+<script type="math/tex; mode=display">A=UDV</script><p>其中，$U$和$V$是酉矩阵，$D$是对角矩阵，称为$A$的奇异值。<br><strong>证明：</strong></p>
+<ol>
+<li>根据极分解z，$A=SJ$，其中$S$为酉矩阵，$J$为半正定矩阵。</li>
+<li>根据谱分解定理，$J=TDT^\dagger$，其中$T$为酉矩阵，$D$为对角矩阵。</li>
+<li>由上：<script type="math/tex; mode=display">A=SJ=STDT^\dagger</script></li>
+</ol>
+<p>因此有$U=ST$，$V=T^\dagger$。</p>
+<hr>
+<p>密度矩阵</p>
+<p>混态不能用一个态标识出来，系统中出现态$\left|\psi_i\right&gt;$的概率为$p_i$，密度矩阵可写为：</p>
+<script type="math/tex; mode=display">\rho=\sum_i^np_i \left|\psi_i\right>\left<\psi_i\right|</script><p>这里当$n=1$是为纯态密度矩阵。可观察量$A$在混态中的期望值为：</p>
+<script type="math/tex; mode=display">E(A)=\sum_i^n p_i \left<\psi_i\right|A\left|\psi_i\right>=\text{tr}(\rho A)</script><p>纯态也有相同结果 。</p>
+<p>混态的$\text{tr}(\rho^2)&lt;1$：</p>
+<script type="math/tex; mode=display">\text{tr}(\rho^2)=\sum_{i,j}p_j^2 \left<i\mid \psi_j\right> \left<\psi_j\mid i\right>\le\sum_i p_i^2<\sum_i p_i=1</script><p>对于纯态来说：</p>
+<script type="math/tex; mode=display">\left|\psi\right>=\cos\frac{\theta}{2} \left|0\right>+e^{i\varphi}\sin{\frac{\theta}{2}} \left|1\right></script><p>其密度矩阵为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\rho&= \left|\psi\right>\left<\psi\right|\\
+&= \begin{pmatrix}
+\cos^2\frac{\theta}{2}&\cos\frac{\theta}{2}\sin\frac{\theta}{2}e^{-i\varphi}\\
+\cos\frac{\theta}{2}\sin\frac{\theta}{2}e^{i\varphi}&\sin^2\frac{\theta}{2}
+\end{pmatrix}\\
+&= \frac{1}{2}\begin{pmatrix}
+1+\cos\theta&\sin\theta e^{-i\varphi}\\
+\sin\theta e^{i\varphi}&1-\cos\theta
+\end{pmatrix}\\
+&=\frac{I+\vec{r}\cdot \vec{\sigma}}{2}
+\end{aligned}</script><p>对于混态来说，有$\rho=\sum_i p_i \rho_i$，因此，也有上述的形式。</p>
+<hr>
+<p>施密特分解</p>
+<blockquote>
+<p>Now at Pg. 139.</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本原理"><span class="toc-number">1.</span> <span class="toc-text">基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用量子门"><span class="toc-number">1.1.</span> <span class="toc-text">常用量子门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经典离散傅里叶算法"><span class="toc-number">1.2.</span> <span class="toc-text">经典离散傅里叶算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量子离散傅里叶算法"><span class="toc-number">1.3.</span> <span class="toc-text">量子离散傅里叶算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#门实现"><span class="toc-number">1.4.</span> <span class="toc-text">门实现</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&text=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&is_video=false&description=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Notes on Quantum Information&body=Check out this article: https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&title=Notes on Quantum Information" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/donghufeng/2020/03/15/Notes-on-Quantum-Information/&name=Notes on Quantum Information&description=&lt;p&gt;Notes on &lt;em&gt;Quantum Computation and Quantum Information&lt;/em&gt;.&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 xu xusheng
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js"></script> -->
+</body>
+</html>
