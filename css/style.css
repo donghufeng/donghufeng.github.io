@@ -417,7 +417,7 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 14px;
+  font-size: 16px;
   overflow: auto;
   display: block;
 }
@@ -426,7 +426,7 @@ body th {
   border-bottom: 1px dashed #666;
   color: #111;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 17px;
 }
 body td {
   padding: 9px 8px 0;
@@ -457,7 +457,7 @@ body {
   color: #363533;
   font-display: swap;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 2.4;
   text-rendering: geometricPrecision;
@@ -578,8 +578,8 @@ body {
   letter-spacing: 0.01em;
   font-weight: 700;
   font-style: normal;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 3.2rem;
+  line-height: 5rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -590,22 +590,19 @@ body {
 }
 #header #logo {
   display: inline-block;
-  float: left;
   margin-right: 20px;
-  width: 100px;
-  height: 100px;
+  width: 384px;
+  height: 144px;
   border-radius: 5px;
-  filter: grayscale(100%);
-  background-size: 100px 100px;
+  background-size: 384px 144px;
   background-repeat: no-repeat;
-  -webkit-filter: grayscale(100%);
 }
 #header #nav {
   color: #d44375;
   letter-spacing: 0.01em;
   font-weight: 200;
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 #header #nav ul {
   margin: 0;
@@ -647,7 +644,7 @@ body {
   #header #title {
     display: table;
     margin-right: 5rem;
-    min-height: 100px;
+    min-height: 144px;
   }
   #header #title h1 {
     display: table-cell;
@@ -671,7 +668,7 @@ body {
   }
   #header #nav li:not(:first-child) {
     padding-top: 1rem;
-    padding-left: 120px;
+    padding-left: 404px;
     font-size: 1rem;
   }
 }
@@ -1373,7 +1370,7 @@ article .content .caption {
   color: #e2e0de;
   font-display: swap;
   font-weight: 400;
-  font-size: 12.8px;
+  font-size: 14.4px;
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 2.4;
   text-rendering: geometricPrecision;
