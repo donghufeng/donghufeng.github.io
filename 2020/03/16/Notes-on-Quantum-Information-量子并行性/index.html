@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Notes on Quantum Computation and Quantum Information.介绍量子并行性的优越以及相关的重要算法。">
+<meta name="keywords" content="量子信息,量子并行性,Deutsch算法,Deutsch-Jozsa算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on Quantum Information - 量子并行性">
+<meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;donghufeng&#x2F;2020&#x2F;03&#x2F;16&#x2F;Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7&#x2F;index.html">
+<meta property="og:site_name" content="东湖风的札记">
+<meta property="og:description" content="Notes on Quantum Computation and Quantum Information.介绍量子并行性的优越以及相关的重要算法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch-Jozsa.png">
+<meta property="og:updated_time" content="2020-03-16T04:24:11.073Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;Deutsch.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Notes on Quantum Information - 量子并行性</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E9%9A%90%E5%BD%A2%E4%BC%A0%E6%80%81/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&text=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&is_video=false&description=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Notes on Quantum Information - 量子并行性&body=Check out this article: https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&name=Notes on Quantum Information - 量子并行性&description=&lt;p&gt;Notes on &lt;em&gt;Quantum Computation and Quantum Information&lt;/em&gt;.&lt;br&gt;介绍量子并行性的优越以及相关的重要算法。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#量子并行性"><span class="toc-number">1.</span> <span class="toc-text">量子并行性</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Notes on Quantum Information - 量子并行性
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">东湖风的札记</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-16T04:12:11.000Z" itemprop="datePublished">2020-03-16</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Deutsch-Jozsa%E7%AE%97%E6%B3%95/" rel="tag">Deutsch-Jozsa算法</a>, <a class="tag-link" href="/tags/Deutsch%E7%AE%97%E6%B3%95/" rel="tag">Deutsch算法</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/" rel="tag">量子并行性</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Notes on <em>Quantum Computation and Quantum Information</em>.<br>介绍量子并行性的优越以及相关的重要算法。</p>
+<a id="more"></a>
+<h2 id="量子并行性"><a href="#量子并行性" class="headerlink" title="量子并行性"></a>量子并行性</h2><p>假设有函数$f(x):\{0,1\}^n\rightarrow{0,1}$，可以构造门$U_f$使得</p>
+<script type="math/tex; mode=display">U_f \left|x,y\right>=\left|x,y\oplus f(x)\right></script><ul>
+<li>同时得到$f(x)$的值</li>
+</ul>
+<p>取$\left|x,y\right&gt;=\frac{1}{\sqrt{2^n}}\sum_x \left|x\right&gt;\left|0\right&gt;$，作用$U_f$后，得到</p>
+<script type="math/tex; mode=display">U_f \left|x,y\right>=\frac{1}{\sqrt{2^n}}\sum_x \left|x\right>\left|f(x)\right></script><ul>
+<li>Deutsch算法</li>
+</ul>
+<p>上面得到的态在测量时，只能坍缩到某个特定的$\left|f(x)\right&gt;$，因此并不真正意义上的并行。该算法能得到关于$f(x)$的全局信息。<br><img src="/img/Deutsch.png" alt="Deutsch算法"><br>对于以上线路，经过演算可得到：</p>
+<script type="math/tex; mode=display">\left|\psi_3\right>=\pm \left|f(0)\oplus f(1)\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><p>因此第一个比特是$f(x)$的全局信息$f(0)\oplus f(1)$。计算过程用到一个关键点：</p>
+<script type="math/tex; mode=display">U_f \left|x\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}=(-1)^{f(x)}\left|x\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><ul>
+<li>Deutsch-Jozsa算法</li>
+</ul>
+<p>如果Alice手上的$f(x)$确保是常值函数或者平衡函数，Bob如何快速（尽量少次数地交换信息）判断出是什么函数？<br><img src="/img/Deutsch-Jozsa.png" alt="Deutsch-Jozsa算法"><br>根据演化可得到：</p>
+<script type="math/tex; mode=display">\left|\psi_3\right>=\frac{1}{2^n}\sum_z\sum_x(-1)^{f(x)+x\cdot z}\left|z\right>\frac{\left|0\right>-\left|1\right>}{\sqrt{2}}</script><p>注意到，取$\left|z\right&gt;=\left|0\right&gt;^{\otimes n}$时，$\sum_x(-1)^{f(x)}/2^n$对于$f$为常值函数时已经归一化，$\left|z\right&gt;$取不到其他态，因此前$n$个比特只能全为0；当$f$为平衡函数时，$\left|z\right&gt;$中$\left|0\right&gt;^{\otimes n}$项的振幅为0，因此，前$n$个比特必不能全为0。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#量子并行性"><span class="toc-number">1.</span> <span class="toc-text">量子并行性</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&text=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&is_video=false&description=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Notes on Quantum Information - 量子并行性&body=Check out this article: https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&title=Notes on Quantum Information - 量子并行性" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/&name=Notes on Quantum Information - 量子并行性&description=&lt;p&gt;Notes on &lt;em&gt;Quantum Computation and Quantum Information&lt;/em&gt;.&lt;br&gt;介绍量子并行性的优越以及相关的重要算法。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 xu xusheng
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/donghufeng">项目</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js"></script> -->
+</body>
+</html>
