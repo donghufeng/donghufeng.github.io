@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="东湖风的札记">
 <meta property="og:description" content="Notes on Quantum Computation and Quantum Information.泡利算符的有用性质。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T03:55:29.308Z">
+<meta property="og:updated_time" content="2020-03-16T11:17:40.530Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泡利矩阵、旋转算符和旋转哈密顿量之间的关系"><span class="toc-number">2.</span> <span class="toc-text">泡利矩阵、旋转算符和旋转哈密顿量之间的关系</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泡利矩阵、旋转算符和旋转哈密顿量之间的关系"><span class="toc-number">2.</span> <span class="toc-text">泡利矩阵、旋转算符和旋转哈密顿量之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#旋转算符的导数"><span class="toc-number">3.</span> <span class="toc-text">旋转算符的导数</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -170,7 +170,12 @@
 <script type="math/tex; mode=display">\left\{\sigma_i,\sigma_j\right\}=0</script><p>由反对以关系还可以得到：</p>
 <script type="math/tex; mode=display">\sigma_i\sigma_j\sigma_i=-\sigma_j</script><p>其物理图像为，在布洛赫球中，将$j$轴绕$i$转动$\pi$的坐标变换，此时$j$轴变为$-j$轴。</p>
 <h2 id="泡利矩阵、旋转算符和旋转哈密顿量之间的关系"><a href="#泡利矩阵、旋转算符和旋转哈密顿量之间的关系" class="headerlink" title="泡利矩阵、旋转算符和旋转哈密顿量之间的关系"></a>泡利矩阵、旋转算符和旋转哈密顿量之间的关系</h2><script type="math/tex; mode=display">U=R_i(\omega t)=e^{-i\omega t \sigma_i/2}=\cos(\omega t/2)I-i\sin(\omega t/2)\sigma_i</script><p>对应的哈密顿量为$H=\hbar \omega \sigma_i/2$</p>
-
+<h2 id="旋转算符的导数"><a href="#旋转算符的导数" class="headerlink" title="旋转算符的导数"></a>旋转算符的导数</h2><script type="math/tex; mode=display">\begin{aligned}
+    \frac{\partial R_i(\omega t)}{\partial t}&=-\frac{\omega}{2}\sin\frac{\omega t}{2}I-\frac{\omega}{2}i\cos\frac{\omega t}{2}\sigma_i\\
+    &=-i\frac{\omega}{2}\sigma_i \left[-i\sin\frac{\omega t}{2}\sigma_i+\cos\frac{\omega t}{2}I\right]\\
+    &=-\frac{i\omega}{2}\sigma_iR_i(\omega t)\\
+    &=\frac{\omega}{2}R_i(\omega t+\pi)
+\end{aligned}</script>
   </div>
 </article>
 
@@ -201,7 +206,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泡利矩阵、旋转算符和旋转哈密顿量之间的关系"><span class="toc-number">2.</span> <span class="toc-text">泡利矩阵、旋转算符和旋转哈密顿量之间的关系</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泡利矩阵、旋转算符和旋转哈密顿量之间的关系"><span class="toc-number">2.</span> <span class="toc-text">泡利矩阵、旋转算符和旋转哈密顿量之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#旋转算符的导数"><span class="toc-number">3.</span> <span class="toc-text">旋转算符的导数</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="东湖风的札记">
 <meta property="og:description" content="推导对含参数的量子线路的求导。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T03:57:14.726Z">
+<meta property="og:updated_time" content="2020-03-16T11:20:57.705Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特"><span class="toc-number">1.</span> <span class="toc-text">单比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多比特"><span class="toc-number">2.</span> <span class="toc-text">多比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多泡利算符"><span class="toc-number">3.</span> <span class="toc-text">多泡利算符</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特"><span class="toc-number">1.</span> <span class="toc-text">单比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多比特"><span class="toc-number">2.</span> <span class="toc-text">多比特</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -156,7 +156,46 @@
 
   <div class="content" itemprop="articleBody">
     <p>推导对含参数的量子线路的求导。<br><a id="more"></a></p>
-<h2 id="单比特"><a href="#单比特" class="headerlink" title="单比特"></a>单比特</h2><h2 id="多比特"><a href="#多比特" class="headerlink" title="多比特"></a>多比特</h2><h2 id="多泡利算符"><a href="#多泡利算符" class="headerlink" title="多泡利算符"></a>多泡利算符</h2>
+<h2 id="单比特"><a href="#单比特" class="headerlink" title="单比特"></a>单比特</h2><ul>
+<li>情形1</li>
+</ul>
+<p>单比特旋转算符$R_m$在态$ \left|\psi\right&gt;$和$ \left|\varphi\right&gt;$上的平均值为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    y(\theta) &= \left<\psi\right|R_m(\theta)\left|\varphi\right>\\
+    &=\left<\psi\right|(\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}\sigma_m)\left|\varphi\right>
+\end{aligned}</script><p>对上式求导可得：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{\partial y}{\partial \theta}
+    &=\frac{1}{2}\left<\psi\right|(-\sin\frac{\theta}{2}I-i\cos\frac{\theta}{2}\sigma_m)\left|\varphi\right>\\
+    &=\frac{1}{2}\left<\psi\right|(\sin\frac{\theta+\pi}{2}I-i\cos\frac{\theta+\pi}{2}\sigma_m)\left|\varphi\right>\\
+    &=\frac{1}{2}\left<\psi\right|R_m(\theta+\pi)\left|\varphi\right>\\
+    &=\left<\psi\right|\frac{\partial R_m(\theta)}{\partial\theta}\left|\varphi\right>
+\end{aligned}</script><p>上式中对矩阵求导为对矩阵每个元素求导。进一步，如果参数含有系数则：</p>
+<script type="math/tex; mode=display">y=\left<\psi\right|R_m(a\theta)\left|\varphi\right></script><p>设$\beta=a\theta$，那么有：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{\partial y}{\partial \theta}&=\frac{\partial y}{\partial \beta}\frac{\partial \beta}{\partial \theta}\\
+    &=a\frac{\partial y}{\partial \beta}\\
+    &=\frac{a}{2}\left<\psi\right|R_m(\beta+\pi)\left|\varphi\right>\\
+    &=\frac{a}{2}\left<\psi\right|R_m(a\theta+\pi)\left|\varphi\right>
+\end{aligned}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> projectq</span><br><span class="line"><span class="keyword">from</span> projectq.ops <span class="keyword">import</span> Ry, Rz, Rx, All, Measure</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_wavefunc</span><span class="params">(n_qubits, seed=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> seed <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        np.random.seed(seed)</span><br><span class="line">    w = np.random.random((<span class="number">1</span> &lt;&lt; n_qubits)) + <span class="number">1j</span> * \</span><br><span class="line">        np.random.random((<span class="number">1</span> &lt;&lt; n_qubits))</span><br><span class="line">    <span class="keyword">return</span> w/np.sqrt(np.vdot(w, w))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rx</span><span class="params">(theta)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.array([[np.cos(theta / <span class="number">2</span>), <span class="number">-1j</span> * np.sin(theta / <span class="number">2</span>)],</span><br><span class="line">                     [<span class="number">-1j</span> * np.sin(theta / <span class="number">2</span>), np.cos(theta / <span class="number">2</span>)]])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evl</span><span class="params">(psi0, ops, n_qubits)</span>:</span></span><br><span class="line">    eng = projectq.MainEngine()</span><br><span class="line">    wavefunction = eng.allocate_qureg(n_qubits)</span><br><span class="line">    eng.flush()</span><br><span class="line"></span><br><span class="line">    eng.backend.set_wavefunction(psi0, wavefunction)</span><br><span class="line">    ops | wavefunction[<span class="number">0</span>]</span><br><span class="line">    eng.flush()</span><br><span class="line"></span><br><span class="line">    psi = eng.backend.cheat()[<span class="number">1</span>]</span><br><span class="line">    All(Measure) | wavefunction</span><br><span class="line">    <span class="keyword">return</span> psi</span><br><span class="line">   </span><br><span class="line">n_qubits = <span class="number">1</span></span><br><span class="line">psi1 = random_wavefunc(n_qubits)</span><br><span class="line">psi2 = random_wavefunc(n_qubits)</span><br><span class="line">theta = <span class="number">0.234</span></span><br><span class="line">delta_theta = <span class="number">0.001</span></span><br><span class="line"></span><br><span class="line">y0 = np.vdot(psi2, evl(psi1, Rx(theta), n_qubits))</span><br><span class="line">y1 = np.vdot(psi2, evl(psi1, Rx(theta + delta_theta), n_qubits))</span><br><span class="line"></span><br><span class="line">y2 = np.vdot(psi2, rx(theta).dot(psi1))</span><br><span class="line">y3 = np.vdot(psi2, rx(theta + np.pi).dot(psi1)) / <span class="number">2</span></span><br><span class="line">y4 = np.vdot(psi2, rx(theta + delta_theta).dot(psi1))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">"y0 =    &#123;&#125;"</span>.format(y0))</span><br><span class="line">print(<span class="string">'np y0 = &#123;&#125;'</span>.format(y2))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"excepted gradient =    &#123;&#125;"</span>.format(</span><br><span class="line">    <span class="number">0.5</span> * np.vdot(psi2, evl(psi1, Rx(theta+np.pi), n_qubits))))</span><br><span class="line">print(<span class="string">'np excepted gradient = &#123;&#125;'</span>.format(y3))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"difference gradient =    &#123;&#125;"</span>.format((y1 - y0) / delta_theta))</span><br><span class="line">print(<span class="string">'np difference gradient = &#123;&#125;'</span>.format((y4 - y2) / delta_theta))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>情形2</li>
+</ul>
+<p>在求某观察量的平均值时，函数的形式通常为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    y&=\left<\psi\right|R_m^\dagger(\theta)HR_m(\theta)\left|\psi\right>\\
+     &=\left<\psi\right|(\cos\frac{\theta}{2}I+i\sin\frac{\theta}{2}\sigma_m)H(\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}\sigma_m)\left|\psi\right>
+\end{aligned}</script><p>因此有：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{\partial y}{\partial\theta}&=\frac{1}{2}\left<\psi\right|(-\sin\frac{\theta}{2}I+i\cos\frac{\theta}{2}\sigma_m)HR_m(\theta)\left|\psi\right>\\
+    &+\frac{1}{2}\left<\psi\right|R_m^\dagger(\theta)H(-\sin\frac{\theta}{2}I-i\cos\frac{\theta}{2}\sigma_m)\left|\psi\right>\\
+    &=\frac{1}{2}\left<\psi\right|(\cos\frac{\theta+\pi}{2}I+i\sin\frac{\theta+\pi}{2}\sigma_m)HR_m(\theta)\left|\psi\right>\\
+    &+\frac{1}{2}\left<\psi\right|R_m^\dagger(\theta)H(\cos\frac{\theta+\pi}{2}I-i\sin\frac{\theta+\pi}{2}\sigma_m)\left|\psi\right>\\
+    &=\frac{1}{2}\left<\psi\right|R_m^\dagger(\theta+\pi)HR_m(\theta)\left|\psi\right>+\frac{1}{2}\left<\psi\right|R_m^\dagger(\theta)HR_m(\theta+\pi)\left|\psi\right>\\
+    &=\Re \left[\left<\psi\right|R_m^\dagger(\theta)HR_m(\theta+\pi)\left|\psi\right>\right]\\
+    &=2\Re \left[\left<\psi\right|R_m^\dagger(\theta)H\frac{\partial R_m(\theta)}{\partial \theta}\left|\psi\right>\right]
+\end{aligned}</script><h2 id="多比特"><a href="#多比特" class="headerlink" title="多比特"></a>多比特</h2><p>对含参数的线路进行求导时，实际可以直接对含相应参数的门的矩阵元进行求导，在放入线路中演化。</p>
+
   </div>
 </article>
 
@@ -187,7 +226,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特"><span class="toc-number">1.</span> <span class="toc-text">单比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多比特"><span class="toc-number">2.</span> <span class="toc-text">多比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多泡利算符"><span class="toc-number">3.</span> <span class="toc-text">多泡利算符</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特"><span class="toc-number">1.</span> <span class="toc-text">单比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多比特"><span class="toc-number">2.</span> <span class="toc-text">多比特</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
