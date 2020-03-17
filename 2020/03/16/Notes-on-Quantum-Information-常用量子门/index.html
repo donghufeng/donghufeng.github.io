@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="东湖风的札记">
 <meta property="og:description" content="Notes on Quantum Computation and Quantum Information.常用量子门及其性质">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T03:38:53.167Z">
+<meta property="og:updated_time" content="2020-03-16T15:38:47.256Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -193,12 +193,15 @@ i&0
 e^{-i\theta/2}&0\\
 0&e^{i\theta/2}
 \end{pmatrix}</script><ul>
+<li>$R_{\vec{n}}(\theta)$：</li>
+</ul>
+<script type="math/tex; mode=display">R_{\vec{n}}(\theta)=\exp(-i\theta \vec{n}\cdot\vec{\sigma}/2)=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}\vec{n}\cdot \vec{\sigma}</script><ul>
 <li>Hadamard门</li>
 </ul>
-<script type="math/tex; mode=display">\frac{1}{\sqrt{2}}\begin{pmatrix}
+<script type="math/tex; mode=display">H=\frac{1}{\sqrt{2}}\begin{pmatrix}
 1&1\\
 1&-1
-\end{pmatrix}=R_x(\pi)R_y(\pi/2)=XY^{1/2}</script><p>均匀叠加态：</p>
+\end{pmatrix}=\frac{1}{\sqrt{2}}(X+Z)=R_x(\pi)R_y(\pi/2)=XY^{1/2}</script><p>均匀叠加态：</p>
 <script type="math/tex; mode=display">H^{\otimes n}\left|0\right>^{\otimes n}=\frac{1}{\sqrt{2^n}}\sum_{x\in\{0,1\}^n}\left|x\right></script><p>对于单比特时：</p>
 <script type="math/tex; mode=display">H \left|x\right>=\frac{1}{\sqrt{2}}\sum_{z\in \{0,1\}}(-1)^{xz}\left|z\right>=\frac{1}{\sqrt{2}}\sum_{z\in \{0,1\}}e^{ixz\pi}\left|z\right></script><p>更进一步，当初始态为$n$比特任意态时：</p>
 <script type="math/tex; mode=display">H^{\otimes n}\left|x\right>=\frac{1}{\sqrt{2^n}}\sum_{z}(-1)^{x\cdot z}\left|z\right></script><p>其中$x\cdot z$为$\left|x\right&gt;$和$\left|z\right&gt;$逐比特位相乘再求和。</p>
@@ -231,8 +234,20 @@ e^{-i\theta/2}&0\\
 &\rightarrow \left|a\oplus a\oplus b,a\oplus b\right>=\left|b,a\oplus b\right>\\
 &\rightarrow \left|b,a\oplus b \oplus b\right>=\left|b,a\right>
 \end{aligned}</script><ul>
-<li>Toffoli门<br>就是CCNOT门。<br>模拟与非门：$T \left|a,b,1\right&gt;=\left|a,b,1\oplus(ab)\right&gt;=\left|a,b,\bar{ab}\right&gt;$<br>模拟FANOUT扇出：$T \left|1,a,0\right&gt;=\left|1,a,a\right&gt;$<br><strong>注意，上述的模拟不是通用的，只对输入为$\left|0\right&gt;$或者$\left|1\right&gt;$适用。</strong></li>
+<li><p>Toffoli门<br>就是CCNOT门。<br>模拟与非门：$T \left|a,b,1\right&gt;=\left|a,b,1\oplus(ab)\right&gt;=\left|a,b,\bar{ab}\right&gt;$<br>模拟FANOUT扇出：$T \left|1,a,0\right&gt;=\left|1,a,a\right&gt;$<br><strong>注意，上述的模拟不是通用的，只对输入为$\left|0\right&gt;$或者$\left|1\right&gt;$适用。</strong></p>
+</li>
+<li><p>相位门</p>
+</li>
 </ul>
+<script type="math/tex; mode=display">S= \begin{pmatrix}
+1&0\\
+0&i
+\end{pmatrix}</script><ul>
+<li>T门</li>
+</ul>
+<script type="math/tex; mode=display">T=\begin{pmatrix}
+1&0\\0&\exp(i\pi/4)
+\end{pmatrix}</script><p>易知$S=T^2$。</p>
 
   </div>
 </article>

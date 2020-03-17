@@ -7,15 +7,21 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Notes on Quantum Computation and Quantum Information.记录零碎知识点。">
-<meta name="keywords" content="量子信息,模二加法,门分解,贝尔态,算符分类">
+<meta name="keywords" content="量子信息,模二加法,门分解,贝尔态,算符分类,Trotter定理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes on Quantum Information - 零碎知识点">
 <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;donghufeng&#x2F;2020&#x2F;03&#x2F;16&#x2F;Notes-on-Quantum-Information-%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9&#x2F;index.html">
 <meta property="og:site_name" content="东湖风的札记">
 <meta property="og:description" content="Notes on Quantum Computation and Quantum Information.记录零碎知识点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T05:25:01.630Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;generate_bell_state.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;bell_basis_measurement.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;cz.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;hcnot.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;cu.png">
+<meta property="og:updated_time" content="2020-03-17T14:04:20.720Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;img&#x2F;generate_bell_state.png">
     
     
         
@@ -106,7 +112,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模二加法"><span class="toc-number">1.</span> <span class="toc-text">模二加法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特任意门分解"><span class="toc-number">2.</span> <span class="toc-text">单比特任意门分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔态"><span class="toc-number">3.</span> <span class="toc-text">贝尔态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同总类的算符"><span class="toc-number">4.</span> <span class="toc-text">不同总类的算符</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模二加法"><span class="toc-number">1.</span> <span class="toc-text">模二加法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特任意门分解"><span class="toc-number">2.</span> <span class="toc-text">单比特任意门分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔态"><span class="toc-number">3.</span> <span class="toc-text">贝尔态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同总类的算符"><span class="toc-number">4.</span> <span class="toc-text">不同总类的算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#门转换"><span class="toc-number">5.</span> <span class="toc-text">门转换</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -146,7 +152,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/%E6%A8%A1%E4%BA%8C%E5%8A%A0%E6%B3%95/" rel="tag">模二加法</a>, <a class="tag-link" href="/tags/%E7%AE%97%E7%AC%A6%E5%88%86%E7%B1%BB/" rel="tag">算符分类</a>, <a class="tag-link" href="/tags/%E8%B4%9D%E5%B0%94%E6%80%81/" rel="tag">贝尔态</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>, <a class="tag-link" href="/tags/%E9%97%A8%E5%88%86%E8%A7%A3/" rel="tag">门分解</a>
+        <a class="tag-link" href="/tags/Trotter%E5%AE%9A%E7%90%86/" rel="tag">Trotter定理</a>, <a class="tag-link" href="/tags/%E6%A8%A1%E4%BA%8C%E5%8A%A0%E6%B3%95/" rel="tag">模二加法</a>, <a class="tag-link" href="/tags/%E7%AE%97%E7%AC%A6%E5%88%86%E7%B1%BB/" rel="tag">算符分类</a>, <a class="tag-link" href="/tags/%E8%B4%9D%E5%B0%94%E6%80%81/" rel="tag">贝尔态</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>, <a class="tag-link" href="/tags/%E9%97%A8%E5%88%86%E8%A7%A3/" rel="tag">门分解</a>
     </div>
 
 
@@ -157,8 +163,20 @@
   <div class="content" itemprop="articleBody">
     <p>Notes on <em>Quantum Computation and Quantum Information</em>.<br>记录零碎知识点。<br><a id="more"></a></p>
 <h2 id="模二加法"><a href="#模二加法" class="headerlink" title="模二加法"></a>模二加法</h2><p>模二加法$\oplus$是不考虑进位的加法，是加法运算的子集，等同于异或，满足交换律结合律</p>
-<script type="math/tex; mode=display">a\oplus a=0, 0\oplus a=a,1\oplus a=\bar{a}</script><h2 id="单比特任意门分解"><a href="#单比特任意门分解" class="headerlink" title="单比特任意门分解"></a>单比特任意门分解</h2><script type="math/tex; mode=display">U=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)</script><h2 id="贝尔态"><a href="#贝尔态" class="headerlink" title="贝尔态"></a>贝尔态</h2><p>先作用Hadmard门，再作用和CNOT门。</p>
-<script type="math/tex; mode=display">\left|\beta_{xy}\right>=\frac{\left|0,y\right>+(-1)^x \left|1,\bar{y}\right>}{\sqrt{2}}</script><h2 id="不同总类的算符"><a href="#不同总类的算符" class="headerlink" title="不同总类的算符"></a>不同总类的算符</h2><ul>
+<script type="math/tex; mode=display">a\oplus a=0, 0\oplus a=a,1\oplus a=\bar{a}</script><h2 id="单比特任意门分解"><a href="#单比特任意门分解" class="headerlink" title="单比特任意门分解"></a>单比特任意门分解</h2><script type="math/tex; mode=display">\begin{aligned}
+    U&=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)\\
+    &=e^{i\alpha}AXBXC\\
+    &=e^{i\alpha}R_{\vec{n}}(\theta)
+\end{aligned}</script><p>上式中：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    A&=R_z(\beta)R_y(\gamma/2)\\
+    B&=R_y(-\gamma/2)R_z(-(\delta+\beta)/2)\\
+    C&=R_z((\delta-\beta)/2)\\
+    I&=ABC
+\end{aligned}</script><h2 id="贝尔态"><a href="#贝尔态" class="headerlink" title="贝尔态"></a>贝尔态</h2><p>先作用Hadmard门，再作用和CNOT门。</p>
+<script type="math/tex; mode=display">\left|\beta_{xy}\right>=\frac{\left|0,y\right>+(-1)^x \left|1,\bar{y}\right>}{\sqrt{2}}</script><p>产生贝尔态的线路：<br><img src="/img/generate_bell_state.png" alt="generate bell state"></p>
+<p>贝尔基测量：<br><img src="/img/bell_basis_measurement.png" alt="bell_basis_measurement"><br>与产生贝尔基矢的线路互逆，（基矢的变换与系数的变换互逆）。</p>
+<h2 id="不同总类的算符"><a href="#不同总类的算符" class="headerlink" title="不同总类的算符"></a>不同总类的算符</h2><ul>
 <li>Hermitian</li>
 </ul>
 <script type="math/tex; mode=display">A=A^\dagger</script><ul>
@@ -176,7 +194,22 @@
 <script type="math/tex; mode=display">\left<v\right|A\left|v\right> > 0, \text{for any} \left|v\right></script><ul>
 <li>Projector</li>
 </ul>
-<script type="math/tex; mode=display">P=\sum_{i=1}^k \left|i\right>\left<i\right|</script>
+<script type="math/tex; mode=display">P=\sum_{i=1}^k \left|i\right>\left<i\right|</script><h2 id="门转换"><a href="#门转换" class="headerlink" title="门转换"></a>门转换</h2><ul>
+<li>控制Z门</li>
+</ul>
+<script type="math/tex; mode=display">\text{C}Z(0,1)=\text{C}Z(1,0)</script><p><img src="/img/cz.png" alt="CZ"></p>
+<ul>
+<li>Hadmard门和CNOT门</li>
+</ul>
+<script type="math/tex; mode=display">H^{\otimes 2}\text{CNOT}(0,1)H^{\otimes 2}=\text{CNOT}(1,0)</script><p><img src="/img/hcnot.png" alt="Hadmard and CNOT"></p>
+<ul>
+<li>控制U门</li>
+</ul>
+<p><img src="/img/cu.png" alt="CU"></p>
+<ul>
+<li>Trotter定理</li>
+</ul>
+<script type="math/tex; mode=display">\lim_{n\rightarrow\infty}(e^{iAt/n}e^{iBt/n})^n=e^{i(A+B)t}</script>
   </div>
 </article>
 
@@ -207,7 +240,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模二加法"><span class="toc-number">1.</span> <span class="toc-text">模二加法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特任意门分解"><span class="toc-number">2.</span> <span class="toc-text">单比特任意门分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔态"><span class="toc-number">3.</span> <span class="toc-text">贝尔态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同总类的算符"><span class="toc-number">4.</span> <span class="toc-text">不同总类的算符</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模二加法"><span class="toc-number">1.</span> <span class="toc-text">模二加法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单比特任意门分解"><span class="toc-number">2.</span> <span class="toc-text">单比特任意门分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔态"><span class="toc-number">3.</span> <span class="toc-text">贝尔态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同总类的算符"><span class="toc-number">4.</span> <span class="toc-text">不同总类的算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#门转换"><span class="toc-number">5.</span> <span class="toc-text">门转换</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

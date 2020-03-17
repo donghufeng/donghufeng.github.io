@@ -7,14 +7,14 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Notes on Quantum Computation and Quantum Information.介绍矩阵的各种分解。">
-<meta name="keywords" content="量子信息,极分解">
+<meta name="keywords" content="量子信息,极分解,奇异值分解,Schmidt分解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes on Quantum Information - 各种分解">
 <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;donghufeng&#x2F;2020&#x2F;03&#x2F;16&#x2F;Notes-on-Quantum-Information-%E5%90%84%E7%A7%8D%E5%88%86%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="东湖风的札记">
 <meta property="og:description" content="Notes on Quantum Computation and Quantum Information.介绍矩阵的各种分解。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-16T05:33:04.407Z">
+<meta property="og:updated_time" content="2020-03-16T15:09:59.056Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#极分解-Polar-decomposition"><span class="toc-number">1.</span> <span class="toc-text">极分解(Polar decomposition)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">2.</span> <span class="toc-text">奇异值分解</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#极分解-Polar-decomposition"><span class="toc-number">1.</span> <span class="toc-text">极分解(Polar decomposition)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">2.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schmidt分解"><span class="toc-number">3.</span> <span class="toc-text">Schmidt分解</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -146,7 +146,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/%E6%9E%81%E5%88%86%E8%A7%A3/" rel="tag">极分解</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>
+        <a class="tag-link" href="/tags/Schmidt%E5%88%86%E8%A7%A3/" rel="tag">Schmidt分解</a>, <a class="tag-link" href="/tags/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/" rel="tag">奇异值分解</a>, <a class="tag-link" href="/tags/%E6%9E%81%E5%88%86%E8%A7%A3/" rel="tag">极分解</a>, <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/" rel="tag">量子信息</a>
     </div>
 
 
@@ -178,6 +178,16 @@
 <li>由上：<script type="math/tex; mode=display">A=SJ=STDT^\dagger</script></li>
 </ol>
 <p>因此有$U=ST$，$V=T^\dagger$。</p>
+<h2 id="Schmidt分解"><a href="#Schmidt分解" class="headerlink" title="Schmidt分解"></a>Schmidt分解</h2><p>复合系统$AB$中的纯态$ \left|\psi\right&gt; $总能按如下分解：</p>
+<script type="math/tex; mode=display">\left|\psi\right>=\sum_i \lambda_i \left|i_A\right> \left|i_B\right></script><p>其中$ \left|i_A\right&gt; $和$ \left|i_B\right&gt; $分别为两个子系统的正交归一基矢，且$\lambda_i$是正实数，满足归一化条件$\sum_i\lambda_i^2=1$。</p>
+<p><strong>证明：</strong></p>
+<p>这里假设两个子系统的空间维度一样，并且取两个子系统的任意正交归一基矢为$ \left|j\right&gt; $和$ \left|k\right&gt; $，则复合空间$AB$中的纯态$ \left|\psi\right&gt; $可按照子空间的基矢展开：</p>
+<script type="math/tex; mode=display">\left|\psi\right> =\sum_{jk}a_{jk} \left|j\right> \left|k\right></script><p>系数矩阵$a$为方阵，可进行奇异值分解$a=udv$，因此：</p>
+<script type="math/tex; mode=display">\left|\psi\right>=\sum_{ijk} u_{ji}d_{ii}v_{ik}\left|j\right> \left|k\right></script><p>令$ \left|i_A\right&gt;=\sum_ju_{ji} \left|j\right&gt;, \left|i_B\right&gt;=\sum_k v_{ik} \left|k\right&gt;, \lambda_i=d_{ii} $，即可得到满足条件的分解。此时有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \rho^A&=\text{tr}_B(\left|\psi\right>\left<\psi\right|)=\sum_i \lambda_i^2 \left|i_A\right>\left<i_A\right|\\
+    \rho^B&=\text{tr}_A(\left|\psi\right>\left<\psi\right|)=\sum_i \lambda_i^2 \left|i_B\right>\left<i_B\right|
+\end{aligned}</script><p>易知，$ \left|i_X\right&gt; $为纯态$ \left|\psi\right&gt; $在子系统$X$中的约化密度矩阵$\rho^X$的本征态，$\lambda_i^2$为两个子系统约化密度矩阵的共同本征值。</p>
 
   </div>
 </article>
@@ -209,7 +219,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#极分解-Polar-decomposition"><span class="toc-number">1.</span> <span class="toc-text">极分解(Polar decomposition)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">2.</span> <span class="toc-text">奇异值分解</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#极分解-Polar-decomposition"><span class="toc-number">1.</span> <span class="toc-text">极分解(Polar decomposition)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#奇异值分解"><span class="toc-number">2.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schmidt分解"><span class="toc-number">3.</span> <span class="toc-text">Schmidt分解</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
