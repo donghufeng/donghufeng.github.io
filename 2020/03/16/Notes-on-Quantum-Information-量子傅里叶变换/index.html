@@ -15,7 +15,7 @@
 <meta property="og:description" content="Notes on Quantum Computation and Quantum Information.量子傅里叶变换算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;6&#x2F;61&#x2F;Q_fourier_nqubits.png&#x2F;1280px-Q_fourier_nqubits.png?1557480175741">
-<meta property="og:updated_time" content="2020-03-18T16:53:51.000Z">
+<meta property="og:updated_time" content="2020-03-19T02:58:06.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;6&#x2F;61&#x2F;Q_fourier_nqubits.png&#x2F;1280px-Q_fourier_nqubits.png?1557480175741">
     
@@ -215,7 +215,16 @@
 <script type="math/tex; mode=display">R_m=\begin{pmatrix}1&0\\0&e^{2\pi i /(2^m)}\end{pmatrix}</script><p>具体实现如下图，最后再做sweep门交换一下态即可。<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Q_fourier_nqubits.png/1280px-Q_fourier_nqubits.png?1557480175741" alt="quantum fourier"></p>
 <!-- slide -->
 <p>量子傅里叶算法所需门的复杂度为$\Theta(n^2)$，而最快的经典傅里叶算法时离散傅里叶算法，复杂度为$\Theta(n2^n)$。</p>
-
+<!-- slide -->
+<blockquote>
+<p>证明量子傅里叶变换是酉变换。</p>
+</blockquote>
+<script type="math/tex; mode=display">\begin{aligned}
+\text{FT}^\dagger\text{FT}\left|j\right>&=\text{FT}^\dagger \left[\frac{1}{\sqrt{N}}\sum_k e^{2\pi ijk/N} \left|k\right>\right]\\
+&=\frac{1}{N}\sum_k\sum_m e^{2\pi i(j-m)k/N} \left|m\right>\\
+&=\frac{1}{N}\sum_m N\delta_{jm} \left|m\right>\\
+&=\left|j\right>
+\end{aligned}</script>
   </div>
 </article>
 
