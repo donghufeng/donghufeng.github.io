@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Quantum Chemistry - Basic</title>
+      <link href="/2020/03/20/Quantum-Chemistry-Basic/"/>
+      <url>/2020/03/20/Quantum-Chemistry-Basic/</url>
+      
+        <content type="html"><![CDATA[<p>Notes on <em>Modern Quantum Chemistry</em>.<br>基本知识。</p><a id="more"></a><h2 id="原子单位"><a href="#原子单位" class="headerlink" title="原子单位"></a>原子单位</h2><p>原子单位是为了进行无量纲处理。氢原子的电子波动方程可写为：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e}\nabla^2-\frac{e^2}{4\pi\varepsilon_0r}\right]\phi=E\phi</script><p>对长度进行无量纲化，取$r=\lambda r’$，代入上式可得：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e \lambda^2}\nabla'^2-\frac{e^2}{4\pi\varepsilon_0r'\lambda}\right]\phi=E\phi</script><p>令:</p><script type="math/tex; mode=display">\frac{\hbar^2}{m_e \lambda^2}=\frac{e^2}{4 \pi \varepsilon_0 \lambda}=E_a</script><p>称$E_a$为一个<em>Hartree</em>，约为$27.211\text{eV}$，由上式可得：</p><script type="math/tex; mode=display">\lambda=\frac{4 \pi\varepsilon_0 \hbar^2}{m_e e^2}=a_0</script><p>称$a_0$为玻尔半径，约为0.52918埃。经过单位转化过后，薛定谔方程变为：</p><script type="math/tex; mode=display">\left(-\frac{1}{2} \nabla'^2-\frac{1}{r'}\right)\phi'=E'\phi'</script><p>因此在原子单位里，能力的单位为一个Hartree $E_a$，长度的单位为一个波尔半径$a_0$。</p><h2 id="多体相互作用哈密顿量"><a href="#多体相互作用哈密顿量" class="headerlink" title="多体相互作用哈密顿量"></a>多体相互作用哈密顿量</h2><p>对于$M$个原子和$N$个电子的系统，其哈密顿量在原子单位下可写为：</p><script type="math/tex; mode=display">\begin{aligned}H&=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{A=1}^{M}\frac{1}{2M_A}\nabla _{A}^{2}-\sum_{i=1}^{M}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}\\&+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}\end{aligned}</script><h2 id="电子哈密顿量"><a href="#电子哈密顿量" class="headerlink" title="电子哈密顿量"></a>电子哈密顿量</h2><p>由于原子比电子重很多，因此可以近似认为原子是不动的，只有电子在原子所形成的场中运动，那么原子的动能将为被忽略，而原子之间的相互作用将为常数，因此哈密顿量可以简化为：</p><script type="math/tex; mode=display">H_\text{elec}=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}</script><p>并称其为电子哈密顿量。设其本征值为$E_\text{elec}$，那么系统总能量是电子能量和原子排斥能之和，则为：</p><script type="math/tex; mode=display">E_ \text{tot}=E_ \text{elec}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}</script><h2 id="泡利不相容原理"><a href="#泡利不相容原理" class="headerlink" title="泡利不相容原理"></a>泡利不相容原理</h2><p>电子具有$1/2$自旋，因此电子的坐标是由位置坐标和自旋方向构成：</p><script type="math/tex; mode=display">x=\{r,w\}</script><p>泡利不相容原理说，电子波函数中，交换两个电子不能同时处于同意空间位置，因此有：</p><script type="math/tex; mode=display">\Phi \left(x_1,\cdots,x_i,\cdots,x_j,\cdots,x_n\right)=-\Phi \left(x_1,\cdots,x_j,\cdots,x_i,\cdots,x_n\right)</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Quantum Chemistry </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算化学 </tag>
+            
+            <tag> 原子单位 </tag>
+            
+            <tag> Hartree </tag>
+            
+            <tag> 波尔半径 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Notes on Quantum Information - 阶查找</title>
       <link href="/2020/03/19/Notes-on-Quantum-Information-%E9%98%B6%E6%9F%A5%E6%89%BE/"/>
       <url>/2020/03/19/Notes-on-Quantum-Information-%E9%98%B6%E6%9F%A5%E6%89%BE/</url>
@@ -52,19 +83,6 @@
             <tag> 相位估计 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2020/03/17/hello-world/"/>
-      <url>/2020/03/17/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>$\alpha$</p><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
@@ -469,6 +487,19 @@
             <tag> 数学 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/10/22/hello-world/"/>
+      <url>/2019/10/22/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>$\alpha$</p><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
       
     </entry>
     
