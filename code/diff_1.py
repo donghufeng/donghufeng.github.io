@@ -30,12 +30,12 @@ def evl(psi0, ops, n_qubits):
     return psi
 
 
-n_qubits = 1
-psi1 = random_wavefunc(n_qubits)
-psi2 = random_wavefunc(n_qubits)
-theta = 0.234
+n_qubits    = 1
+psi1        = random_wavefunc(n_qubits)
+psi2        = random_wavefunc(n_qubits)
+theta       = 0.234
 delta_theta = 0.001
-a = 2.3
+a           = 2.3
 
 y0 = np.vdot(psi2, evl(psi1, Rx(a * theta), n_qubits))
 y1 = np.vdot(psi2, evl(psi1, Rx(a * (theta + delta_theta)), n_qubits))
