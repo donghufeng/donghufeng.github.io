@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/donghufeng/"/>
-  <updated>2020-03-20T07:11:13.000Z</updated>
+  <updated>2020-03-21T08:16:46.000Z</updated>
   <id>https://github.com/donghufeng/</id>
   
   <author>
@@ -14,16 +14,45 @@
     
   </author>
   
-  <generator uri="http://hexo.io/">Hexo</generator>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python - 类</title>
+    <link href="https://github.com/donghufeng/2020/03/21/python-%E7%B1%BB/"/>
+    <id>https://github.com/donghufeng/2020/03/21/python-%E7%B1%BB/</id>
+    <published>2020-03-21T07:32:00.000Z</published>
+    <updated>2020-03-21T08:16:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍python面向对象编程时的一些方法。<br><a id="more"></a></p><h2 id="抽象方法、类方法和静态方法"><a href="#抽象方法、类方法和静态方法" class="headerlink" title="抽象方法、类方法和静态方法"></a>抽象方法、类方法和静态方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># %%</span></span><br><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""person</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setdoc</span><span class="params">(cls,doc)</span>:</span></span><br><span class="line">        cls.__doc__=doc</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayhi</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"hi"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">woman</span><span class="params">(person)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    woman</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        person.__init__(self)</span><br><span class="line">        self.sex=<span class="string">'woman'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self,name)</span>:</span></span><br><span class="line">        self.name=name</span><br><span class="line"></span><br><span class="line"><span class="comment"># %%</span></span><br><span class="line">alice=woman()</span><br><span class="line"></span><br><span class="line"><span class="comment"># staticmethod</span></span><br><span class="line">alice.sayhi() <span class="comment">#hi</span></span><br><span class="line">woman.sayhi() <span class="comment">#hi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># classmethod</span></span><br><span class="line">print(alice.__doc__) <span class="comment">#woman</span></span><br><span class="line">print(woman.__doc__) <span class="comment">#woman</span></span><br><span class="line">alice.setdoc(<span class="string">"set by alice"</span>)</span><br><span class="line">print(alice.__doc__) <span class="comment">#set by alice</span></span><br><span class="line">print(woman.__doc__) <span class="comment">#set by alice</span></span><br><span class="line">woman.setdoc(<span class="string">"set by woman"</span>)</span><br><span class="line">print(alice.__doc__) <span class="comment">#set by woman</span></span><br><span class="line">print(woman.__doc__) <span class="comment">#set by woman</span></span><br><span class="line"><span class="comment"># %%</span></span><br></pre></td></tr></table></figure><p><code>@abstractmethod</code>:</p><p>必须被子类重新实现，否者在实例化时就会报错</p><p><code>@classmethod</code>:</p><p>类方法可通过实例调用，也可通过类直接调用，改变的是类本身的参数，类方法的第一个关键字是cls</p><p><code>@staticmethod</code></p><p>静态方法，可通过类本身或者实例来调用，不会改变类或者实例本身的任何东西，但是该方法隶属于该类，这么写是为了方便代码组织。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍python面向对象编程时的一些方法。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://github.com/donghufeng/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://github.com/donghufeng/tags/python/"/>
+    
+      <category term="抽象方法" scheme="https://github.com/donghufeng/tags/%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="类方法" scheme="https://github.com/donghufeng/tags/%E7%B1%BB%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="静态方法" scheme="https://github.com/donghufeng/tags/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Quantum Chemistry - Basic</title>
     <link href="https://github.com/donghufeng/2020/03/20/Quantum-Chemistry-Basic/"/>
     <id>https://github.com/donghufeng/2020/03/20/Quantum-Chemistry-Basic/</id>
     <published>2020-03-20T05:47:31.000Z</published>
-    <updated>2020-03-20T07:11:13.000Z</updated>
+    <updated>2020-03-20T07:47:53.690Z</updated>
     
-    <content type="html"><![CDATA[<p>Notes on <em>Modern Quantum Chemistry</em>.<br>基本知识。</p><a id="more"></a><h2 id="原子单位"><a href="#原子单位" class="headerlink" title="原子单位"></a>原子单位</h2><p>原子单位是为了进行无量纲处理。氢原子的电子波动方程可写为：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e}\nabla^2-\frac{e^2}{4\pi\varepsilon_0r}\right]\phi=E\phi</script><p>对长度进行无量纲化，取$r=\lambda r’$，代入上式可得：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e \lambda^2}\nabla'^2-\frac{e^2}{4\pi\varepsilon_0r'\lambda}\right]\phi=E\phi</script><p>令:</p><script type="math/tex; mode=display">\frac{\hbar^2}{m_e \lambda^2}=\frac{e^2}{4 \pi \varepsilon_0 \lambda}=E_a</script><p>称$E_a$为一个<em>Hartree</em>，约为$27.211\text{eV}$，由上式可得：</p><script type="math/tex; mode=display">\lambda=\frac{4 \pi\varepsilon_0 \hbar^2}{m_e e^2}=a_0</script><p>称$a_0$为玻尔半径，约为0.52918埃。经过单位转化过后，薛定谔方程变为：</p><script type="math/tex; mode=display">\left(-\frac{1}{2} \nabla'^2-\frac{1}{r'}\right)\phi'=E'\phi'</script><p>因此在原子单位里，能力的单位为一个Hartree $E_a$，长度的单位为一个波尔半径$a_0$。</p><h2 id="多体相互作用哈密顿量"><a href="#多体相互作用哈密顿量" class="headerlink" title="多体相互作用哈密顿量"></a>多体相互作用哈密顿量</h2><p>对于$M$个原子和$N$个电子的系统，其哈密顿量在原子单位下可写为：</p><script type="math/tex; mode=display">\begin{aligned}H&=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{A=1}^{M}\frac{1}{2M_A}\nabla _{A}^{2}-\sum_{i=1}^{M}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}\\&+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}\end{aligned}</script><h2 id="电子哈密顿量"><a href="#电子哈密顿量" class="headerlink" title="电子哈密顿量"></a>电子哈密顿量</h2><p>由于原子比电子重很多，因此可以近似认为原子是不动的，只有电子在原子所形成的场中运动，那么原子的动能将为被忽略，而原子之间的相互作用将为常数，因此哈密顿量可以简化为：</p><script type="math/tex; mode=display">H_\text{elec}=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}</script><p>并称其为电子哈密顿量。设其本征值为$E_\text{elec}$，那么系统总能量是电子能量和原子排斥能之和，则为：</p><script type="math/tex; mode=display">E_ \text{tot}=E_ \text{elec}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}</script><h2 id="泡利不相容原理"><a href="#泡利不相容原理" class="headerlink" title="泡利不相容原理"></a>泡利不相容原理</h2><p>电子具有$1/2$自旋，因此电子的坐标是由位置坐标和自旋方向构成：</p><script type="math/tex; mode=display">x=\{r,w\}</script><p>泡利不相容原理说，电子波函数中，交换两个电子不能同时处于同意空间位置，因此有：</p><script type="math/tex; mode=display">\Phi \left(x_1,\cdots,x_i,\cdots,x_j,\cdots,x_n\right)=-\Phi \left(x_1,\cdots,x_j,\cdots,x_i,\cdots,x_n\right)</script>]]></content>
+    <content type="html"><![CDATA[<p>Notes on <em>Modern Quantum Chemistry</em>.<br>基本知识。</p><a id="more"></a><h2 id="原子单位"><a href="#原子单位" class="headerlink" title="原子单位"></a>原子单位</h2><p>原子单位是为了进行无量纲处理。氢原子的电子波动方程可写为：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e}\nabla^2-\frac{e^2}{4\pi\varepsilon_0r}\right]\phi=E\phi</script><p>对长度进行无量纲化，取$r=\lambda r’$，代入上式可得：</p><script type="math/tex; mode=display">\left[-\frac{\hbar^2}{2m_e \lambda^2}\nabla'^2-\frac{e^2}{4\pi\varepsilon_0r'\lambda}\right]\phi=E\phi</script><p>令:</p><script type="math/tex; mode=display">\frac{\hbar^2}{m_e \lambda^2}=\frac{e^2}{4 \pi \varepsilon_0 \lambda}=E_a</script><p>称$E_a$为一个<em>Hartree</em>，约为$27.211\text{eV}$，由上式可得：</p><script type="math/tex; mode=display">\lambda=\frac{4 \pi\varepsilon_0 \hbar^2}{m_e e^2}=a_0</script><p>称$a_0$为玻尔半径，约为0.52918埃。经过单位转化过后，薛定谔方程变为：</p><script type="math/tex; mode=display">\left(-\frac{1}{2} \nabla'^2-\frac{1}{r'}\right)\phi'=E'\phi'</script><p>因此在原子单位里，能力的单位为一个Hartree $E_a$，长度的单位为一个波尔半径$a_0$。</p><h2 id="多体相互作用哈密顿量"><a href="#多体相互作用哈密顿量" class="headerlink" title="多体相互作用哈密顿量"></a>多体相互作用哈密顿量</h2><p>对于$M$个原子和$N$个电子的系统，其哈密顿量在原子单位下可写为：</p><script type="math/tex; mode=display">\begin{aligned}H&=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{A=1}^{M}\frac{1}{2M_A}\nabla _{A}^{2}-\sum_{i=1}^{M}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}\\&+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}\end{aligned}</script><h2 id="电子哈密顿量"><a href="#电子哈密顿量" class="headerlink" title="电子哈密顿量"></a>电子哈密顿量</h2><p>由于原子比电子重很多，因此可以近似认为原子是不动的，只有电子在原子所形成的场中运动，那么原子的动能将为被忽略，而原子之间的相互作用将为常数，因此哈密顿量可以简化为：</p><script type="math/tex; mode=display">H_\text{elec}=-\sum_{i=1}^{N}\frac{1}{2}\nabla _{i}^{2}-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>i}^{N}\frac{1}{r_{ij}}</script><p>并称其为电子哈密顿量。设其本征值为$E_\text{elec}$，那么系统总能量是电子能量和原子排斥能之和，则为：</p><script type="math/tex; mode=display">E_ \text{tot}=E_ \text{elec}+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}</script><h2 id="泡利不相容原理"><a href="#泡利不相容原理" class="headerlink" title="泡利不相容原理"></a>泡利不相容原理</h2><p>电子具有$1/2$自旋，因此电子的坐标是由位置坐标和自旋方向构成：</p><script type="math/tex; mode=display">x=\{r,w\}</script><p>泡利不相容原理说，电子波函数中，交换两个电子不能同时处于同意空间位置，因此有：</p><script type="math/tex; mode=display">\Phi \left(x_1,\cdots,x_i,\cdots,x_j,\cdots,x_n\right)=-\Phi \left(x_1,\cdots,x_j,\cdots,x_i,\cdots,x_n\right)</script><h2 id="单电子波函数"><a href="#单电子波函数" class="headerlink" title="单电子波函数"></a>单电子波函数</h2><p>单电子波函数由空间波函数和自旋波函数构成：</p><script type="math/tex; mode=display">\chi(x)=\psi(r) \left|+\right> \text{or } \psi(r) \left|-\right></script><p>对于多电子哈密顿量来说，如果忽略电子之间的排斥力，则多电子波函数是单电子波函数的乘积构成，称为<strong>Hartree Product</strong>。但是该波函数不满足泡利反对称性，因此需要通过如下方法构造。</p><h2 id="Slater-Determinats"><a href="#Slater-Determinats" class="headerlink" title="Slater Determinats"></a>Slater Determinats</h2><p>联想到在矩阵求秩时，任意交换两行则秩会反号，因此可通过求单电子波函数构成的矩阵的秩的方法来求多电子波函数的满足反对称性的波函数。</p><script type="math/tex; mode=display">\Psi(x_1,\cdots,x_N)=\frac{1}{\sqrt{N!}} \begin{vmatrix}\chi_i(x_1)&\chi_j(x_1)&\cdots&\chi_k(x_1)\\\chi_i(x_2)&\chi_j(x_2)&\cdots&\chi_k(x_2)\\\vdots&\vdots&&\vdots\\\chi_i(x_N)&\chi_j(x_N)&\cdots&\chi_k(x_N)\end{vmatrix}</script><p>并简写为：</p><script type="math/tex; mode=display">\Psi= \left|\chi_i\chi_j\cdots\chi_k\right></script>]]></content>
     
     <summary type="html">
     
@@ -48,7 +77,7 @@
   <entry>
     <title>Notes on Quantum Information - 阶查找</title>
     <link href="https://github.com/donghufeng/2020/03/19/Notes-on-Quantum-Information-%E9%98%B6%E6%9F%A5%E6%89%BE/"/>
-    <id>https://github.com/donghufeng/2020/03/19/Notes-on-Quantum-Information-阶查找/</id>
+    <id>https://github.com/donghufeng/2020/03/19/Notes-on-Quantum-Information-%E9%98%B6%E6%9F%A5%E6%89%BE/</id>
     <published>2020-03-19T04:05:18.000Z</published>
     <updated>2020-03-19T04:48:10.000Z</updated>
     
@@ -73,7 +102,7 @@
   <entry>
     <title>Notes on Quantum Information - 相位估计</title>
     <link href="https://github.com/donghufeng/2020/03/18/Notes-on-Quantum-Information-%E7%9B%B8%E4%BD%8D%E4%BC%B0%E8%AE%A1/"/>
-    <id>https://github.com/donghufeng/2020/03/18/Notes-on-Quantum-Information-相位估计/</id>
+    <id>https://github.com/donghufeng/2020/03/18/Notes-on-Quantum-Information-%E7%9B%B8%E4%BD%8D%E4%BC%B0%E8%AE%A1/</id>
     <published>2020-03-18T09:37:48.000Z</published>
     <updated>2020-03-19T00:37:33.739Z</updated>
     
@@ -98,7 +127,7 @@
   <entry>
     <title>拍平一个矩阵</title>
     <link href="https://github.com/donghufeng/2020/03/16/%E6%8B%8D%E5%B9%B3%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5/"/>
-    <id>https://github.com/donghufeng/2020/03/16/拍平一个矩阵/</id>
+    <id>https://github.com/donghufeng/2020/03/16/%E6%8B%8D%E5%B9%B3%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5/</id>
     <published>2020-03-16T08:17:04.000Z</published>
     <updated>2020-03-16T14:40:46.656Z</updated>
     
@@ -123,7 +152,7 @@
   <entry>
     <title>Notes on Quantum Information - 各种分解</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%90%84%E7%A7%8D%E5%88%86%E8%A7%A3/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-各种分解/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%90%84%E7%A7%8D%E5%88%86%E8%A7%A3/</id>
     <published>2020-03-16T05:28:14.000Z</published>
     <updated>2020-03-16T15:09:59.056Z</updated>
     
@@ -152,7 +181,7 @@
   <entry>
     <title>Notes on Quantum Information - 密度算符与迹</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%AF%86%E5%BA%A6%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%BF%B9/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-密度算符与迹/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%AF%86%E5%BA%A6%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%BF%B9/</id>
     <published>2020-03-16T05:24:20.000Z</published>
     <updated>2020-03-16T05:27:09.083Z</updated>
     
@@ -179,7 +208,7 @@
   <entry>
     <title>Notes on Quantum Information - Cauchy-Schwarz不等式</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-Cauchy-Schwarz%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-Cauchy-Schwarz不等式/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-Cauchy-Schwarz%E4%B8%8D%E7%AD%89%E5%BC%8F/</id>
     <published>2020-03-16T05:19:12.000Z</published>
     <updated>2020-03-16T05:21:52.176Z</updated>
     
@@ -204,7 +233,7 @@
   <entry>
     <title>Hexo注意事项</title>
     <link href="https://github.com/donghufeng/2020/03/16/Hexo%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Hexo注意事项/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Hexo%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
     <published>2020-03-16T04:42:52.000Z</published>
     <updated>2020-03-16T05:18:09.315Z</updated>
     
@@ -225,7 +254,7 @@
   <entry>
     <title>Notes on Quantum Information - 量子傅里叶变换</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-量子傅里叶变换/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/</id>
     <published>2020-03-16T04:31:18.000Z</published>
     <updated>2020-03-19T02:58:06.000Z</updated>
     
@@ -250,7 +279,7 @@
   <entry>
     <title>Notes on Quantum Information - 量子并行性</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-量子并行性/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E5%B9%B6%E8%A1%8C%E6%80%A7/</id>
     <published>2020-03-16T04:12:11.000Z</published>
     <updated>2020-03-19T00:37:33.739Z</updated>
     
@@ -279,7 +308,7 @@
   <entry>
     <title>Notes on Quantum Information - 量子隐形传态</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E9%9A%90%E5%BD%A2%E4%BC%A0%E6%80%81/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-量子隐形传态/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%87%8F%E5%AD%90%E9%9A%90%E5%BD%A2%E4%BC%A0%E6%80%81/</id>
     <published>2020-03-16T04:05:16.000Z</published>
     <updated>2020-03-19T00:37:33.739Z</updated>
     
@@ -304,7 +333,7 @@
   <entry>
     <title>Notes on Quantum Information - 零碎知识点</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-零碎知识点/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
     <published>2020-03-16T04:00:22.000Z</published>
     <updated>2020-03-19T03:04:15.000Z</updated>
     
@@ -337,7 +366,7 @@
   <entry>
     <title>量子线路求导</title>
     <link href="https://github.com/donghufeng/2020/03/16/%E9%87%8F%E5%AD%90%E7%BA%BF%E8%B7%AF%E6%B1%82%E5%AF%BC/"/>
-    <id>https://github.com/donghufeng/2020/03/16/量子线路求导/</id>
+    <id>https://github.com/donghufeng/2020/03/16/%E9%87%8F%E5%AD%90%E7%BA%BF%E8%B7%AF%E6%B1%82%E5%AF%BC/</id>
     <published>2020-03-16T03:55:49.000Z</published>
     <updated>2020-03-16T11:20:57.705Z</updated>
     
@@ -364,7 +393,7 @@
   <entry>
     <title>Notes on Quantum Information - 泡利算符性质</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E6%B3%A1%E5%88%A9%E7%AE%97%E7%AC%A6%E6%80%A7%E8%B4%A8/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-泡利算符性质/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E6%B3%A1%E5%88%A9%E7%AE%97%E7%AC%A6%E6%80%A7%E8%B4%A8/</id>
     <published>2020-03-16T03:40:34.000Z</published>
     <updated>2020-03-16T16:00:27.361Z</updated>
     
@@ -393,7 +422,7 @@
   <entry>
     <title>Notes on Quantum Information - 常用量子门</title>
     <link href="https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%B8%B8%E7%94%A8%E9%87%8F%E5%AD%90%E9%97%A8/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-常用量子门/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Notes-on-Quantum-Information-%E5%B8%B8%E7%94%A8%E9%87%8F%E5%AD%90%E9%97%A8/</id>
     <published>2020-03-16T03:33:28.000Z</published>
     <updated>2020-03-16T15:38:47.256Z</updated>
     
@@ -428,7 +457,7 @@
   <entry>
     <title>Note on Quantum Information - 态的基本表述</title>
     <link href="https://github.com/donghufeng/2020/03/16/Note-on-Quantum-Information-%E6%80%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A1%A8%E8%BF%B0/"/>
-    <id>https://github.com/donghufeng/2020/03/16/Note-on-Quantum-Information-态的基本表述/</id>
+    <id>https://github.com/donghufeng/2020/03/16/Note-on-Quantum-Information-%E6%80%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A1%A8%E8%BF%B0/</id>
     <published>2020-03-16T02:31:18.000Z</published>
     <updated>2020-03-19T00:37:33.739Z</updated>
     
@@ -455,7 +484,7 @@
   <entry>
     <title>格林函数</title>
     <link href="https://github.com/donghufeng/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/"/>
-    <id>https://github.com/donghufeng/2019/10/22/格林函数/</id>
+    <id>https://github.com/donghufeng/2019/10/22/%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0/</id>
     <published>2019-10-22T09:10:45.000Z</published>
     <updated>2020-03-15T15:15:47.859Z</updated>
     
