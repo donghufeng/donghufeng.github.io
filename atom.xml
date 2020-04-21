@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/donghufeng/"/>
-  <updated>2020-04-21T11:26:33.596Z</updated>
+  <updated>2020-04-21T11:37:28.649Z</updated>
   <id>https://github.com/donghufeng/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://github.com/donghufeng/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/"/>
     <id>https://github.com/donghufeng/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/</id>
     <published>2020-04-21T11:17:27.000Z</published>
-    <updated>2020-04-21T11:26:33.596Z</updated>
+    <updated>2020-04-21T11:37:28.649Z</updated>
     
-    <content type="html"><![CDATA[<p>简单介绍Linux中的一些系统文件。</p><a id="more"></a><h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a><code>/etc/profile</code></h2><p>用户登录时，系统自动运行的文件，可在此文件中加上自动运行的脚本，例如添加环境变量的脚本。</p><h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a><code>~/.bashrc</code></h2><p>用户打开<code>terminal</code>时自动加载的文件。只对当前用户有效。</p><h2 id="etc-fstab"><a href="#etc-fstab" class="headerlink" title="/etc/fstab"></a><code>/etc/fstab</code></h2><p>开机自动挂载硬盘的文件。</p>]]></content>
+    <content type="html"><![CDATA[<p>简单介绍Linux中的一些系统文件。</p><a id="more"></a><h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a><code>/etc/profile</code></h2><p>用户登录时，系统自动运行的文件，可在此文件中加上自动运行的脚本，例如添加环境变量的脚本。</p><h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a><code>~/.bashrc</code></h2><p>用户打开<code>terminal</code>时自动加载的文件。只对当前用户有效。</p><h2 id="etc-fstab"><a href="#etc-fstab" class="headerlink" title="/etc/fstab"></a><code>/etc/fstab</code></h2><p>开机自动挂载硬盘的文件。</p><h2 id="etc-default-grub"><a href="#etc-default-grub" class="headerlink" title="/etc/default/grub"></a><code>/etc/default/grub</code></h2><p>开机系统选择界面设置文件，修改后通过<code>sudo update-grub</code>进行更新。</p>]]></content>
     
     <summary type="html">
     
