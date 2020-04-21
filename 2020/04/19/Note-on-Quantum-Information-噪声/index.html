@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Note on Quantum Information - 噪声"><meta name="keywords" content="量子信息,量子噪声,马尔可夫"><meta name="author" content="xu xusheng"><meta name="copyright" content="xu xusheng"><title>Note on Quantum Information - 噪声 | 东湖风的札记</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="东湖风的札记" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典噪声"><span class="toc-number">1.</span> <span class="toc-text">经典噪声</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#马尔可夫过程"><span class="toc-number">2.</span> <span class="toc-text">马尔可夫过程</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">xu xusheng</div><div class="author-info__description text-center">虔诚的学习者。</div><div class="follow-button"><a href="https://github.com/donghufeng">Github</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">44</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2020/03/30/GumSYV.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">东湖风的札记</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Note on Quantum Information - 噪声</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-19</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>介绍噪声的基本概念和马尔可夫过程。</p>
+<a id="more"></a>
+<h2 id="经典噪声"><a href="#经典噪声" class="headerlink" title="经典噪声"></a>经典噪声</h2><p>假设某比特初始状态为$a, a\in(0,1)$，进过某个噪声影响后会变成$b, b\in(0,1)$，且有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+p(b=\bar{a})&=p\\
+p(b=a)&=1-p
+\end{aligned}</script><p>则受该噪声影响而产生的态转移为：</p>
+<script type="math/tex; mode=display">\begin{pmatrix}
+q_0\\q_1
+\end{pmatrix}=
+\begin{pmatrix}
+1-p&p\\p&1-p
+\end{pmatrix}
+\begin{pmatrix}
+p_0\\p_1
+\end{pmatrix}</script><p>为了使演化前后的概率分布有意义，则状态转移的矩阵需要满足两个性质，1、<code>完备性</code>：矩阵的每列的和都为1；2、<code>正定</code>：矩阵的元素都是0到1之间的数。</p>
+<h2 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h2><p>假设有两个连续地系统噪声演化，$E_1$和$E_2$，如果此两个噪声没有任何关系，只跟当前系统的状态有关，那么称该过程为马尔可夫过程。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">xu xusheng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://github.com/donghufeng/2020/04/19/Note-on-Quantum-Information-%E5%99%AA%E5%A3%B0/">https://github.com/donghufeng/2020/04/19/Note-on-Quantum-Information-%E5%99%AA%E5%A3%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a><a class="post-meta__tags" href="/tags/%E9%87%8F%E5%AD%90%E5%99%AA%E5%A3%B0/">量子噪声</a><a class="post-meta__tags" href="/tags/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB/">马尔可夫</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/"><i class="fa fa-chevron-left">  </i><span>Linux中的一些文件</span></a></div><div class="next-post pull-right"><a href="/2020/04/19/ubuntu-%E5%8E%86%E5%8F%B2%E8%A1%A5%E5%85%A8/"><span>ubuntu 历史补全</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2020/03/30/GumSYV.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By xu xusheng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="true"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

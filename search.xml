@@ -4,6 +4,110 @@
   
     
     <entry>
+      <title>Linux中的一些文件</title>
+      <link href="/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/"/>
+      <url>/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>简单介绍Linux中的一些系统文件。</p><a id="more"></a><h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a><code>/etc/profile</code></h2><p>用户登录时，系统自动运行的文件，可在此文件中加上自动运行的脚本，例如添加环境变量的脚本。</p><h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a><code>~/.bashrc</code></h2><p>用户打开<code>terminal</code>时自动加载的文件。只对当前用户有效。</p><h2 id="etc-fstab"><a href="#etc-fstab" class="headerlink" title="/etc/fstab"></a><code>/etc/fstab</code></h2><p>开机自动挂载硬盘的文件。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Note on Quantum Information - 噪声</title>
+      <link href="/2020/04/19/Note-on-Quantum-Information-%E5%99%AA%E5%A3%B0/"/>
+      <url>/2020/04/19/Note-on-Quantum-Information-%E5%99%AA%E5%A3%B0/</url>
+      
+        <content type="html"><![CDATA[<p>介绍噪声的基本概念和马尔可夫过程。</p><a id="more"></a><h2 id="经典噪声"><a href="#经典噪声" class="headerlink" title="经典噪声"></a>经典噪声</h2><p>假设某比特初始状态为$a, a\in(0,1)$，进过某个噪声影响后会变成$b, b\in(0,1)$，且有</p><script type="math/tex; mode=display">\begin{aligned}p(b=\bar{a})&=p\\p(b=a)&=1-p\end{aligned}</script><p>则受该噪声影响而产生的态转移为：</p><script type="math/tex; mode=display">\begin{pmatrix}q_0\\q_1\end{pmatrix}=\begin{pmatrix}1-p&p\\p&1-p\end{pmatrix}\begin{pmatrix}p_0\\p_1\end{pmatrix}</script><p>为了使演化前后的概率分布有意义，则状态转移的矩阵需要满足两个性质，1、<code>完备性</code>：矩阵的每列的和都为1；2、<code>正定</code>：矩阵的元素都是0到1之间的数。</p><h2 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h2><p>假设有两个连续地系统噪声演化，$E_1$和$E_2$，如果此两个噪声没有任何关系，只跟当前系统的状态有关，那么称该过程为马尔可夫过程。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子信息 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子信息 </tag>
+            
+            <tag> 量子噪声 </tag>
+            
+            <tag> 马尔可夫 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu 历史补全</title>
+      <link href="/2020/04/19/ubuntu-%E5%8E%86%E5%8F%B2%E8%A1%A5%E5%85%A8/"/>
+      <url>/2020/04/19/ubuntu-%E5%8E%86%E5%8F%B2%E8%A1%A5%E5%85%A8/</url>
+      
+        <content type="html"><![CDATA[<p>如何在linux终端中通过调用page up和page down来补全命令。</p><a id="more"></a><p>打开<code>/etc/inputrc</code>，注释掉<code>history-search-backward</code>和<code>history-search-forward</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CCSD基础</title>
+      <link href="/2020/04/14/CCSD%E5%9F%BA%E7%A1%80/"/>
+      <url>/2020/04/14/CCSD%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<p>简单介绍计算分子基态能量的<code>CCSD</code>理论。<br><a id="more"></a></p><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>如图：<br><img src="/img/ccsd.png" alt="ccsd"></p><p>某个分子可用$n_q=10$个量子比特来描述，其电子数为$n_e=4$。上图为其轨道占据状态。其中有$\text{spin orbital}=10$，且$\text{spatial orbital}=5$，4个电子占据了最低层的空间轨道，未占据的轨道称为虚轨道。</p><h2 id="ccsd越迁"><a href="#ccsd越迁" class="headerlink" title="ccsd越迁"></a>ccsd越迁</h2><p>ccsd只考虑单电子和双电子越迁，不同的越迁可用对应的升降算符表示。对应与上图来说，单电子越迁可写为：</p><script type="math/tex; mode=display">T_1=a_i^\dagger a_j</script><p>当区分不同的电子自旋时，单电子越迁一共有：</p><script type="math/tex; mode=display">\left|T_1\right|=2C^1_\text{occ}C^1_\text{virt}</script><p>双电子越迁的升降算符表达式为：</p><script type="math/tex; mode=display">T_2=a_p^\dagger a_q a_r^\dagger a_s</script><p>可分为两种情况讨论，首先是两个电子的自旋相同，此时的可能性为</p><script type="math/tex; mode=display">2C_\text{virt}^2A_\text{occ}^2</script><p>其次为两个电子的自旋不同，此时可能性为：</p><script type="math/tex; mode=display">(C_\text{occ}^1C_\text{virt}^1)^2</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子化学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子化学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>量子线路求导续</title>
       <link href="/2020/04/02/%E9%87%8F%E5%AD%90%E7%BA%BF%E8%B7%AF%E6%B1%82%E5%AF%BC%E7%BB%AD/"/>
       <url>/2020/04/02/%E9%87%8F%E5%AD%90%E7%BA%BF%E8%B7%AF%E6%B1%82%E5%AF%BC%E7%BB%AD/</url>
