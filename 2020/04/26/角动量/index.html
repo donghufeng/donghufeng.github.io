@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="角动量"><meta name="keywords" content="量子信息,角动量"><meta name="author" content="xu xusheng"><meta name="copyright" content="xu xusheng"><title>角动量 | 东湖风的札记</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="东湖风的札记" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#角动量"><span class="toc-number">1.</span> <span class="toc-text">角动量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#旋转算符"><span class="toc-number">2.</span> <span class="toc-text">旋转算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本征值"><span class="toc-number">3.</span> <span class="toc-text">本征值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自旋"><span class="toc-number">4.</span> <span class="toc-text">自旋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自旋磁矩"><span class="toc-number">5.</span> <span class="toc-text">自旋磁矩</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">xu xusheng</div><div class="author-info__description text-center">虔诚的学习者。</div><div class="follow-button"><a href="https://github.com/donghufeng">Github</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">29</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">46</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2020/03/30/GumSYV.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">东湖风的札记</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">角动量</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-26</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>简单总结角动量理论中的一些结论。<br><a id="more"></a></p>
+<h2 id="角动量"><a href="#角动量" class="headerlink" title="角动量"></a>角动量</h2><p>满足如下对易关系的量都可称为角动量：</p>
+<script type="math/tex; mode=display">[J_i,J_j]=i\hbar \varepsilon_{ijk}J_k</script><p>写为矢量形式：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\left(J\times J\right)_k&=\varepsilon_{kij}(J_iJ_j-J_jJ_i)\\
+&=i\hbar\varepsilon_{ijk}\varepsilon_{kij}J_k\\
+&=i\hbar J_k\\
+J\times J&=i\hbar J
+\end{aligned}</script><p>这里$J_{i,j,k}$称为角动量的分量，定义总角动量算符为：</p>
+<script type="math/tex; mode=display">J^2=J_xJ_x+J_yJ_y+J_zJ_z</script><p>则有：</p>
+<script type="math/tex; mode=display">[J_i,J^2]=0</script><p>定义：</p>
+<script type="math/tex; mode=display">J_\pm=J_x\pm iJ_y</script><p>有对易关系，</p>
+<script type="math/tex; mode=display">\begin{aligned}
+[J_+,J_-]&=2\hbar J_z\\
+[J_z,J_\pm]&=\pm\hbar J_\pm
+\end{aligned}</script><h2 id="旋转算符"><a href="#旋转算符" class="headerlink" title="旋转算符"></a>旋转算符</h2><p>角动量与绕任意轴旋转算符之间的关系：</p>
+<script type="math/tex; mode=display">R_n(\phi)=\exp \left(-iJ\cdot e_n\phi/\hbar\right)</script><h2 id="本征值"><a href="#本征值" class="headerlink" title="本征值"></a>本征值</h2><p>总角动量和$J_z$的本征方程为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+J^2 \left|j,m\right>&=j(j+1)\hbar^2 \left|j,m\right>\\
+J_z \left|j,m\right>&=m \hbar \left|j,m\right>
+\end{aligned}</script><p>其中，$m=-j,-j+1,\cdots,j-1,j$，共可取$2j+1$个值。<br>另外有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+J_+ \left|j,m\right>&=\hbar \sqrt{(j-m)(j+m+1)}\left|j,m+1\right>\\
+J_- \left|j,m\right>&=\hbar \sqrt{(j+m)(j-m+1)}\left|j,m-1\right>\\
+\end{aligned}</script><h2 id="自旋"><a href="#自旋" class="headerlink" title="自旋"></a>自旋</h2><p>以自旋1/2为例，本征态为：</p>
+<script type="math/tex; mode=display">\left|+\right>=\left|1/2,1/2\right>,\left|-\right>=\left|1/2,-1/2\right></script><p>因此，各自旋算符的矩阵表示为：</p>
+<script type="math/tex; mode=display">S_z=\frac{\hbar}{2} \begin{pmatrix}
+1&0\\0&-1
+\end{pmatrix},S_+=\hbar \begin{pmatrix}
+0&0\\1&0
+\end{pmatrix},S_-=\hbar \begin{pmatrix}
+0&1\\0&0
+\end{pmatrix}</script><p>因此有：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+S_i=\frac{\hbar}{2}\sigma_i=\hbar I_i
+\end{aligned}</script><p>自旋绕任意轴旋转的算符为：</p>
+<script type="math/tex; mode=display">R_n(\phi)=\exp \left(-iS\cdot e_n\phi/\hbar\right)=\exp \left(-i\sigma\cdot e_n\phi/2\right)</script><h2 id="自旋磁矩"><a href="#自旋磁矩" class="headerlink" title="自旋磁矩"></a>自旋磁矩</h2><p>经典理论里面，磁矩可写为：</p>
+<script type="math/tex; mode=display">\mu=Ia</script><p>其中$I$为电流，$a$为电流所在的面积矢量。</p>
+<p>在磁场中，磁矩所受到的力矩和势能分别为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\tau&=\mu\times B\\
+U&=-\mu\cdot B
+\end{aligned}</script><p>在量子理论中，自旋磁矩可写为：</p>
+<script type="math/tex; mode=display">\mu=g\frac{q}{2m}S=\gamma S</script><p>以电子为例，</p>
+<script type="math/tex; mode=display">\mu_e=-g_e\frac{e}{2m_e}S</script><p>当外加磁场时，电子将做拉莫尔进动，设自旋角动量为$S$，则有：</p>
+<script type="math/tex; mode=display">\tau=\frac{dS}{dt}=\mu_e\times B</script><p>选择磁场方向为$z$方向，则有：</p>
+<script type="math/tex; mode=display">\omega=\frac{dS}{dt}/S=g_e\frac{e}{2m_e}B=g_e\frac{\mu_b}{\hbar}B=\gamma_eB</script><p>这里，$\mu_b=\frac{e\hbar}{2m_e}$是波尔磁子，$\gamma_e$为电子的旋磁比。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">xu xusheng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://github.com/donghufeng/2020/04/26/%E8%A7%92%E5%8A%A8%E9%87%8F/">https://github.com/donghufeng/2020/04/26/%E8%A7%92%E5%8A%A8%E9%87%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF/">量子信息</a><a class="post-meta__tags" href="/tags/%E8%A7%92%E5%8A%A8%E9%87%8F/">角动量</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/04/23/Note-on-Quantum-Information-%E5%85%89%E9%87%8F%E5%AD%90%E6%96%B9%E6%A1%88/"><span>Note on Quantum Information-光量子方案</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2020/03/30/GumSYV.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By xu xusheng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="true"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

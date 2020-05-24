@@ -4,6 +4,112 @@
   
     
     <entry>
+      <title>角动量</title>
+      <link href="/2020/04/26/%E8%A7%92%E5%8A%A8%E9%87%8F/"/>
+      <url>/2020/04/26/%E8%A7%92%E5%8A%A8%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<p>简单总结角动量理论中的一些结论。<br><a id="more"></a></p><h2 id="角动量"><a href="#角动量" class="headerlink" title="角动量"></a>角动量</h2><p>满足如下对易关系的量都可称为角动量：</p><script type="math/tex; mode=display">[J_i,J_j]=i\hbar \varepsilon_{ijk}J_k</script><p>写为矢量形式：</p><script type="math/tex; mode=display">\begin{aligned}\left(J\times J\right)_k&=\varepsilon_{kij}(J_iJ_j-J_jJ_i)\\&=i\hbar\varepsilon_{ijk}\varepsilon_{kij}J_k\\&=i\hbar J_k\\J\times J&=i\hbar J\end{aligned}</script><p>这里$J_{i,j,k}$称为角动量的分量，定义总角动量算符为：</p><script type="math/tex; mode=display">J^2=J_xJ_x+J_yJ_y+J_zJ_z</script><p>则有：</p><script type="math/tex; mode=display">[J_i,J^2]=0</script><p>定义：</p><script type="math/tex; mode=display">J_\pm=J_x\pm iJ_y</script><p>有对易关系，</p><script type="math/tex; mode=display">\begin{aligned}[J_+,J_-]&=2\hbar J_z\\[J_z,J_\pm]&=\pm\hbar J_\pm\end{aligned}</script><h2 id="旋转算符"><a href="#旋转算符" class="headerlink" title="旋转算符"></a>旋转算符</h2><p>角动量与绕任意轴旋转算符之间的关系：</p><script type="math/tex; mode=display">R_n(\phi)=\exp \left(-iJ\cdot e_n\phi/\hbar\right)</script><h2 id="本征值"><a href="#本征值" class="headerlink" title="本征值"></a>本征值</h2><p>总角动量和$J_z$的本征方程为：</p><script type="math/tex; mode=display">\begin{aligned}J^2 \left|j,m\right>&=j(j+1)\hbar^2 \left|j,m\right>\\J_z \left|j,m\right>&=m \hbar \left|j,m\right>\end{aligned}</script><p>其中，$m=-j,-j+1,\cdots,j-1,j$，共可取$2j+1$个值。<br>另外有</p><script type="math/tex; mode=display">\begin{aligned}J_+ \left|j,m\right>&=\hbar \sqrt{(j-m)(j+m+1)}\left|j,m+1\right>\\J_- \left|j,m\right>&=\hbar \sqrt{(j+m)(j-m+1)}\left|j,m-1\right>\\\end{aligned}</script><h2 id="自旋"><a href="#自旋" class="headerlink" title="自旋"></a>自旋</h2><p>以自旋1/2为例，本征态为：</p><script type="math/tex; mode=display">\left|+\right>=\left|1/2,1/2\right>,\left|-\right>=\left|1/2,-1/2\right></script><p>因此，各自旋算符的矩阵表示为：</p><script type="math/tex; mode=display">S_z=\frac{\hbar}{2} \begin{pmatrix}1&0\\0&-1\end{pmatrix},S_+=\hbar \begin{pmatrix}0&0\\1&0\end{pmatrix},S_-=\hbar \begin{pmatrix}0&1\\0&0\end{pmatrix}</script><p>因此有：</p><script type="math/tex; mode=display">\begin{aligned}S_i=\frac{\hbar}{2}\sigma_i=\hbar I_i\end{aligned}</script><p>自旋绕任意轴旋转的算符为：</p><script type="math/tex; mode=display">R_n(\phi)=\exp \left(-iS\cdot e_n\phi/\hbar\right)=\exp \left(-i\sigma\cdot e_n\phi/2\right)</script><h2 id="自旋磁矩"><a href="#自旋磁矩" class="headerlink" title="自旋磁矩"></a>自旋磁矩</h2><p>经典理论里面，磁矩可写为：</p><script type="math/tex; mode=display">\mu=Ia</script><p>其中$I$为电流，$a$为电流所在的面积矢量。</p><p>在磁场中，磁矩所受到的力矩和势能分别为：</p><script type="math/tex; mode=display">\begin{aligned}\tau&=\mu\times B\\U&=-\mu\cdot B\end{aligned}</script><p>在量子理论中，自旋磁矩可写为：</p><script type="math/tex; mode=display">\mu=g\frac{q}{2m}S=\gamma S</script><p>以电子为例，</p><script type="math/tex; mode=display">\mu_e=-g_e\frac{e}{2m_e}S</script><p>当外加磁场时，电子将做拉莫尔进动，设自旋角动量为$S$，则有：</p><script type="math/tex; mode=display">\tau=\frac{dS}{dt}=\mu_e\times B</script><p>选择磁场方向为$z$方向，则有：</p><script type="math/tex; mode=display">\omega=\frac{dS}{dt}/S=g_e\frac{e}{2m_e}B=g_e\frac{\mu_b}{\hbar}B=\gamma_eB</script><p>这里，$\mu_b=\frac{e\hbar}{2m_e}$是波尔磁子，$\gamma_e$为电子的旋磁比。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子信息 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子信息 </tag>
+            
+            <tag> 角动量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Note on Quantum Information-光量子方案</title>
+      <link href="/2020/04/23/Note-on-Quantum-Information-%E5%85%89%E9%87%8F%E5%AD%90%E6%96%B9%E6%A1%88/"/>
+      <url>/2020/04/23/Note-on-Quantum-Information-%E5%85%89%E9%87%8F%E5%AD%90%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p>Notes on <em>Quantum Computation and Quantum Information</em>.<br>光量子方案。<br><a id="more"></a></p><h2 id="相干态"><a href="#相干态" class="headerlink" title="相干态"></a>相干态</h2><p>激光产生的态是相干态，写为</p><script type="math/tex; mode=display">\left|\alpha\right>=e^{-|\alpha|^2/2}\sum_{n=0}^\infin\frac{\alpha^n}{\sqrt{n!}}\left|n\right></script><p>相干态是降算符的本征态。相干态的平均光子数为$\left&lt;\alpha\right|n\left|\alpha\right&gt;=\left|\alpha\right|^2$，因此通过调节衰减器，可以控制相干态的$\alpha$，例如当$\alpha=\sqrt{0.1}$时，</p><script type="math/tex; mode=display">\left|\alpha\right>=\sqrt{0.90}\left|0\right>+\sqrt{0.09}\left|1\right>+\sqrt{0.002}\left|2\right>+\cdots</script><p>此时，该激光器有10%的概率发射出光子，而其中有95%的是单光子。</p><h2 id="参量下转换"><a href="#参量下转换" class="headerlink" title="参量下转换"></a>参量下转换</h2><p>当光透过某些晶体时，会产生参量下转换过程，对于$\omega_0$的入射光，透过晶体后会产生两束频率分别为$\omega_1$和$\omega_2$的出射光，且满足$\omega_0=\omega_1+\omega_2$。</p><h2 id="光量子控制手段"><a href="#光量子控制手段" class="headerlink" title="光量子控制手段"></a>光量子控制手段</h2><h3 id="相移"><a href="#相移" class="headerlink" title="相移"></a>相移</h3><p>经过长度为$L$，折射率为$n_0$的晶体后，光会有$e^{i(n-n_0)L\omega/c_0}$的相位移动</p><h3 id="分束"><a href="#分束" class="headerlink" title="分束"></a>分束</h3><p>半透半反镜会对光产生分束效果，从量子的角度来说，两束垂直入射的光，经过半透半反镜后两束光可写为：</p><script type="math/tex; mode=display">\begin{aligned}a_ \text{out}&=a_ \text{in}\cos{\theta}+b_ \text{in}\sin{\theta}\\b_ \text{out}&=-a_ \text{in}\sin{\theta}+b_ \text{in}\cos{\theta}\end{aligned}</script><p>当$\theta=45$°时，分束的效果可以用如下图表示<br><img src="/img/fenshu.jpg" alt="分束">g</p><h3 id="克尔效应"><a href="#克尔效应" class="headerlink" title="克尔效应"></a>克尔效应</h3><p>某些晶体具有克尔效应：晶体折射率跟其内部的光强有关系：</p><script type="math/tex; mode=display">n(I)=n+n_2I</script><p>因此，当两束强度相同的光入射到克尔效应的晶体中时，每束光都会有$e^{in_2IL\omega/c_0}$的额外相移。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子信息 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子信息 </tag>
+            
+            <tag> 量子方案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Note on Quantum Information-谐振子方案</title>
+      <link href="/2020/04/23/Note-on-Quantum-Information-%E8%B0%90%E6%8C%AF%E5%AD%90%E6%96%B9%E6%A1%88/"/>
+      <url>/2020/04/23/Note-on-Quantum-Information-%E8%B0%90%E6%8C%AF%E5%AD%90%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p>Notes on <em>Quantum Computation and Quantum Information</em>.<br>谐振子方案。<br><a id="more"></a></p><h2 id="谐振子哈密顿量"><a href="#谐振子哈密顿量" class="headerlink" title="谐振子哈密顿量"></a>谐振子哈密顿量</h2><p>谐振子的哈密顿量为：</p><script type="math/tex; mode=display">H=\hbar \omega \left(a^\dagger a+\frac{1}{2}\right)</script><p>其中升降算符$a\dagger$、$a$满足：</p><script type="math/tex; mode=display">\begin{aligned}a^\dagger \left|n\right>&=\sqrt{n+1}\left|n+1\right>\\a \left|n\right>&=\sqrt{n}\left|n-1\right>\\a^\dagger a \left|n\right>&=n \left|n\right>\end{aligned}</script><h2 id="态演化"><a href="#态演化" class="headerlink" title="态演化"></a>态演化</h2><p>忽略掉零点能带来的全局相位后，任意的处态$\left|\psi(0)\right&gt;=\sum_{n}c_n \left|n\right&gt;$，在谐振子哈密顿量下的演化为：</p><script type="math/tex; mode=display">\begin{aligned}\left|\psi(t)\right>&=e^{-iHt/\hbar}\left|\psi(0)\right>\\&=e^{-ia^\dagger a\omega t}\left|\psi(0)\right>\\&=\sum_nc_ne^{-in\omega t}\left|n\right>\end{aligned}</script><h2 id="量子计算"><a href="#量子计算" class="headerlink" title="量子计算"></a>量子计算</h2><p>以CNOT门为例，在谐振子上作用量子门操作。<br>将逻辑比特于Fock态之间做如下的映射：</p><script type="math/tex; mode=display">\begin{aligned}\left|00\right>_L&=\left|0\right>\\\left|01\right>_L&=\left|2\right>\\\left|10\right>_L&=(\left|4\right>+\left|1\right>)/\sqrt{2}\\\left|11\right>_L&=(\left|4\right>-\left|1\right>)/\sqrt{2}\end{aligned}</script><p>此时，CNOT门则为将系统在谐振子哈密顿量下演化$t=\pi/\omega$，有上可知，进过时间$t$演化后，Fock态会产生一个相位为$e^{-in\pi}=(-1)^n$，因此，当$n$为奇数时，经过演化后会产生$\pi$的相位，对照逻辑比特的映射关系可知满足CNOT门。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子信息 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子信息 </tag>
+            
+            <tag> 量子方案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu20.04中一些快捷键</title>
+      <link href="/2020/04/21/Ubuntu20-04%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2020/04/21/Ubuntu20-04%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      
+        <content type="html"><![CDATA[<p>快捷键<br><a id="more"></a></p><p>ctrl+alt+b：打开浏览器<br>ctrl+alt+t：打开终端<br>ctrl+alt+v：打开vscode<br>alt+q：关闭程序<br>super：显示打开的所有应用<br>super+a：显示电脑中的所有应用<br>alt+w：移动窗口</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux中的一些文件</title>
       <link href="/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/"/>
       <url>/2020/04/21/Linux%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/</url>
